@@ -23,15 +23,10 @@ const Minter = (props) => {
 
 
   const connectWalletPressed = async () => {
-    if (!connected) {
       const walletResponse = await connectWallet();
       setStatus(walletResponse.status);
       setWallet(walletResponse.address);
       setConnected(true);
-    } else {
-      await disconnectWallet();
-      setConnected(false);
-    }
   };
 
 
@@ -87,7 +82,7 @@ const Minter = (props) => {
   return (
     <div className="Minter">
       <button id="walletButton" onClick={connectWalletPressed}>
-        {(walletAddress.length > 0 && connected) ? (
+        {(walletAddress.length > 0) ? (
           "Connected: " +
           String(walletAddress).substring(0, 6) +
           "..." +
