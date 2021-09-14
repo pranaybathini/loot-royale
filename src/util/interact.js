@@ -121,7 +121,7 @@ export const connectWallet = async () => {
     // return wasAdded;
 
     const contract = new web3.eth.Contract(contractABI, contractAddress);
-    const uri = await contract.methods.tokenURI(1).call();
+    const uri = await contract.methods.tokenURI(2).call();
     console.log(uri);
     return uri;
 

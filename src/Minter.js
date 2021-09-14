@@ -96,18 +96,17 @@ const Minter = (props) => {
           <span>Connect Wallet</span>
         )}
       </button>
-      <div>
-            <img src={`data:image/svg+xml;utf8,${status}`} />
-        </div>
+      
       <br></br>
       <h1 id="title">Loot Minter
 
         <button id="mintButton" onClick={onMintPressed}>
           Check Balance
         </button>
-        <p>{status}</p>
       </h1>
-
+      <div>
+            <img src={`data:image/svg+xml;utf8,${status}`} />
+        </div>
     </div>
   );
 };
