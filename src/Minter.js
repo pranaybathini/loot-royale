@@ -101,11 +101,10 @@ const Minter = (props) => {
       </button>
       
       <br></br>
-      <h1 id="title">Loot Minter
-      </h1>
+      
 
       <form>
-        <h2>Mint your NFT: </h2>
+        <h2>Mint your Loot NFT: </h2>
         <input
           type="text"
           placeholder="Enter an ID to claim"
