@@ -6,12 +6,10 @@ const Minter = (props) => {
   //State variables
   const [walletAddress, setWallet] = useState("");
   const [status, setStatus] = useState("");
-  const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
-  const [url, setURL] = useState("");
+  const [id, setID] = useState("");
   const [connected, setConnected] = useState(false);
-
-
+  const [success, setSuccess] = useState(false);
+  const [message, setMessage] = useState('');
   useEffect(async () => {
     setConnected(false);
     const { address, status } = await getCurrentWalletConnected();
@@ -33,17 +31,27 @@ const Minter = (props) => {
 
 
 
-  const onMintPressed = async () => { //TODO: implement
-    const walletResponse = await mintNFT();
-    var obj = JSON.parse(walletResponse);
+  const onMintPressed = async () => { 
+    //TODO: implement a randomiser
+
+    const walletResponse = await mintNFT(id);
+    console.log('Wallet Response after mint',walletResponse);
+
+    setSuccess(walletResponse.success);
+    setMessage(walletResponse.status);
+
+    var obj = JSON.parse(walletResponse.uri);
     console.log(obj.name);
+
     let base64 = obj.image.split(",")[1];
-    setStatus(base64);
+    console.log(base64);
+
     let base64ToString = Buffer.from(base64, "base64").toString();
     console.log(base64ToString);
 
     let svg = base64ToString;
     setStatus(svg);
+
     let blob = new Blob([svg], { type: 'image/svg+xml' });
     let url = URL.createObjectURL(blob);
     let image = document.createElement('img');
@@ -94,14 +102,30 @@ const Minter = (props) => {
       
       <br></br>
       <h1 id="title">Loot Minter
+      </h1>
+
+      <form>
+        <h2>Mint your NFT: </h2>
+        <input
+          type="text"
+          placeholder="Enter an ID to claim"
+          onChange={(event) => setID(event.target.value)}
+        />
+        </form>
 
         <button id="mintButton" onClick={onMintPressed}>
-          Check Balance
+          Mint
         </button>
-      </h1>
-      <div>
-            <img src={`data:image/svg+xml;utf8,${status}`} />
+        <br/><br/>
+       
+       <div>
+            { success ?     <div class="container">
+                        <div class="image"> <img src={`data:image/svg+xml;utf8,${status}`} />  </div>
+                        <div class="text"><p>Transaction : <a target="_blank" href={message}>NFT #{id} txn</a></p></div>
+                        </div>
+            : <p></p>}
         </div>
+        <br/><br/><br/>
     </div>
   );
 };

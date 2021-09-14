@@ -121,8 +121,34 @@ export const connectWallet = async () => {
     // return wasAdded;
 
     const contract = new web3.eth.Contract(contractABI, contractAddress);
-    const uri = await contract.methods.tokenURI(2).call();
-    console.log(uri);
-    return uri;
-
+    
+    const transactionParameters = {
+      to: contractAddress, // Required except during contract publications.
+      from: window.ethereum.selectedAddress, // must match user's active address.
+      data: contract.methods
+        .claim(id)
+        .encodeABI(),
+    };
+  
+    try {
+      const txHash = await window.ethereum.request({
+        method: "eth_sendTransaction",
+        params: [transactionParameters],
+      });
+      const uri = await contract.methods.tokenURI(id).call();
+      console.log(uri);
+      return {
+        success: true,
+        status:
+          "https://testnet.bscscan.com/tx/" +
+          txHash,
+        uri: uri,  
+      };
+    } catch (error) {
+      return {
+        success: false,
+        status: "😥 Something went wrong: " + error.message,
+        uri: '',
+      };
+    }
   };
