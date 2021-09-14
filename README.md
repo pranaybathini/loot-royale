@@ -1,3 +1,5 @@
-# 🗃 Loot
+# 🗃 Rarity Loot
 
-Rarity Loot 
+``` npm install ```
+
+```npm start```
