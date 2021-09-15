@@ -89,8 +89,37 @@ const Minter = (props) => {
 
 
   return (
-    <div className="Minter">
-      <button id="walletButton" onClick={connectWalletPressed}>
+    <div>
+
+
+      <div class="matter">
+
+        <h1>Loot 2.0</h1>
+        <div class="head">
+          <ul>
+            <li><a href="">Opensea</a></li>
+            <li><a href="">Twitter</a></li>
+            <li><a href="https://testnet.bscscan.com/address/0x59dab2913703472b9572e1a81075521c20f4844e">Contract</a></li>
+          </ul>
+        </div>
+        <p>Treasure comes in most unimaginable ways. Here is the pathway that gets you to the treasure. Mint one of our treasure maps and you will be granted what you seek.</p>
+        <p>Claim your random treasure map</p>
+        <button id="mint" onClick={onMintPressed}>Mint</button>
+        <br/>
+        {success ?
+          <div class="container">
+            <div class="image"> <img src={`data:image/svg+xml;utf8,${status}`} />  </div>
+            <div class="text"><p>Transaction : <a target="_blank" href={message}>NFT #{id} txn</a></p></div>
+          </div>
+          :
+          <div class="container">
+            <div class="text"><p> {message}</p></div>
+          </div>}
+          <br /><br />
+
+      </div>
+
+      <button class="login" onClick={connectWalletPressed}>
         {(walletAddress.length > 0) ? (
           "Connected: " +
           String(walletAddress).substring(0, 6) +
@@ -98,34 +127,10 @@ const Minter = (props) => {
           String(walletAddress).substring(38)
         ) : (
           <span>Connect Wallet</span>
-        )}
-      </button>
+        )}</button>
 
-      <br></br>
-
-
-      <h2>Loot your Random NFT :
-  
-      <button id="mintButton" onClick={onMintPressed}>
-      Mint my NFT
-      </button></h2>
-      <br /><br />
-
-      <div>
-        {success ? 
-        <div class="container">
-          <div class="image"> <img src={`data:image/svg+xml;utf8,${status}`} />  </div>
-          <div class="text"><p>Transaction : <a target="_blank" href={message}>NFT #{id} txn</a></p></div>
-        </div>
-          : 
-          <div class="container">
-          <div class="image"> <img src="https://previews.123rf.com/images/lkeskinen/lkeskinen1707/lkeskinen170702353/81520612-cartoon-image-of-burglar-with-loot-bag.jpg" />  </div>
-          <div class="text"><p> {message}</p></div>
-        </div>
-          }
-      </div>
-      <br /><br /><br />
     </div>
+
   );
 };
 

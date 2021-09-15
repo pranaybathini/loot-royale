@@ -108,6 +108,10 @@ export const connectWallet = async () => {
 
 
   export const mintNFT = async () => {
+
+   //TODO: Add LOOT Asset to metamask function
+   // Handle corner cases - like allow this function 10k times
+
     //If id is empty, return with error
     //Add Token
     // const wasAdded = await window.ethereum.request({
