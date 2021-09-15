@@ -104,7 +104,7 @@ const Minter = (props) => {
       <br></br>
 
 
-      <h2>Mint your Random Loot NFT :
+      <h2>Loot your Random NFT :
   
       <button id="mintButton" onClick={onMintPressed}>
       Mint my NFT
@@ -119,7 +119,7 @@ const Minter = (props) => {
         </div>
           : 
           <div class="container">
-          <div class="image"> <img src="https://cdn.dribbble.com/users/1003768/screenshots/4756331/media/1f03df6cdc341992b32df4ce7b517b70.png" />  </div>
+          <div class="image"> <img src="https://previews.123rf.com/images/lkeskinen/lkeskinen1707/lkeskinen170702353/81520612-cartoon-image-of-burglar-with-loot-bag.jpg" />  </div>
           <div class="text"><p> {message}</p></div>
         </div>
           }
