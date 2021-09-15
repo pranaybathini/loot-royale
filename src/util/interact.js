@@ -3,6 +3,7 @@ import Web3 from 'web3';
 const web3 = new Web3(Web3.givenProvider);
 const contractABI = require("../contract-abi.json");
 const contractAddress = "0x59DAB2913703472b9572e1A81075521c20f4844e";
+const ids  = Array(10000).fill().map((_, index) => index + 1);
 
 
 export const connectWallet = async () => {
@@ -104,7 +105,9 @@ export const connectWallet = async () => {
   const tokenDecimals = 18;
   const tokenImage = 'http://placekitten.com/200/300';
 
-  export const mintNFT = async (id) => {
+
+
+  export const mintNFT = async () => {
     //If id is empty, return with error
     //Add Token
     // const wasAdded = await window.ethereum.request({
@@ -122,6 +125,10 @@ export const connectWallet = async () => {
 
     const contract = new web3.eth.Contract(contractABI, contractAddress);
     
+    console.log(ids);
+    shuffle(ids);
+    let id = ids[0];
+
     const transactionParameters = {
       to: contractAddress, // Required except during contract publications.
       from: window.ethereum.selectedAddress, // must match user's active address.
@@ -131,24 +138,53 @@ export const connectWallet = async () => {
     };
   
     try {
+      
       const txHash = await window.ethereum.request({
         method: "eth_sendTransaction",
         params: [transactionParameters],
       });
+      
+      
+
       const uri = await contract.methods.tokenURI(id).call();
       console.log(uri);
+      ids.splice(0,1);
+
+      console.log('Remaining NFTS:', ids);
+
       return {
         success: true,
         status:
           "https://testnet.bscscan.com/tx/" +
           txHash,
         uri: uri,  
+        id: id,
       };
     } catch (error) {
       return {
         success: false,
         status: "😥 Something went wrong: " + error.message,
         uri: '',
+        id: -1,
       };
     }
   };
+
+  function shuffle(array) {
+    let currentIndex = array.length,  randomIndex;
+  
+    // While there remain elements to shuffle...
+    while (currentIndex != 0) {
+  
+      // Pick a remaining element...
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+  
+      // And swap it with the current element.
+      [array[currentIndex], array[randomIndex]] = [
+        array[randomIndex], array[currentIndex]];
+    }
+  
+    return array;
+  }
+  

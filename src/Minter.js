@@ -21,43 +21,44 @@ const Minter = (props) => {
 
 
   const connectWalletPressed = async () => {
-      const walletResponse = await connectWallet();
-      setStatus(walletResponse.status);
-      setWallet(walletResponse.address);
-      setConnected(true);
+    const walletResponse = await connectWallet();
+    setStatus(walletResponse.status);
+    setWallet(walletResponse.address);
+    setConnected(true);
   };
 
 
 
 
 
-  const onMintPressed = async () => { 
-    //TODO: implement a randomiser
+  const onMintPressed = async () => {
 
-    const walletResponse = await mintNFT(id);
-    console.log('Wallet Response after mint',walletResponse);
+    const walletResponse = await mintNFT();
+    console.log('Wallet Response after mint', walletResponse);
 
     setSuccess(walletResponse.success);
     setMessage(walletResponse.status);
+    setID(walletResponse.id);
 
-    var obj = JSON.parse(walletResponse.uri);
-    console.log(obj.name);
+    if (walletResponse.success) {
+      var obj = JSON.parse(walletResponse.uri);
+      console.log(obj.name);
 
-    let base64 = obj.image.split(",")[1];
-    console.log(base64);
+      let base64 = obj.image.split(",")[1];
+      console.log(base64);
 
-    let base64ToString = Buffer.from(base64, "base64").toString();
-    console.log(base64ToString);
+      let base64ToString = Buffer.from(base64, "base64").toString();
+      console.log(base64ToString);
 
-    let svg = base64ToString;
-    setStatus(svg);
+      let svg = base64ToString;
+      setStatus(svg);
 
-    let blob = new Blob([svg], { type: 'image/svg+xml' });
-    let url = URL.createObjectURL(blob);
-    let image = document.createElement('img');
-    image.src = url;
-    image.addEventListener('load', () => URL.revokeObjectURL(url), { once: true });
-
+      let blob = new Blob([svg], { type: 'image/svg+xml' });
+      let url = URL.createObjectURL(blob);
+      let image = document.createElement('img');
+      image.src = url;
+      image.addEventListener('load', () => URL.revokeObjectURL(url), { once: true });
+    }
   };
 
 
@@ -99,36 +100,34 @@ const Minter = (props) => {
           <span>Connect Wallet</span>
         )}
       </button>
-      
+
       <br></br>
-      
 
-      <form>
-        <h2>Mint your Loot NFT: </h2>
-        <input
-          type="text"
-          placeholder="Enter an ID to claim"
-          onChange={(event) => setID(event.target.value)}
-        />
-        </form>
 
-        <button id="mintButton" onClick={onMintPressed}>
-          Mint
-        </button>
-        <br/><br/>
-       
-       <div>
-            { success ?     <div class="container">
-                        <div class="image"> <img src={`data:image/svg+xml;utf8,${status}`} />  </div>
-                        <div class="text"><p>Transaction : <a target="_blank" href={message}>NFT #{id} txn</a></p></div>
-                        </div>
-            : <p></p>}
+      <h2>Mint your Random Loot NFT :
+  
+      <button id="mintButton" onClick={onMintPressed}>
+      Mint my NFT
+      </button></h2>
+      <br /><br />
+
+      <div>
+        {success ? 
+        <div class="container">
+          <div class="image"> <img src={`data:image/svg+xml;utf8,${status}`} />  </div>
+          <div class="text"><p>Transaction : <a target="_blank" href={message}>NFT #{id} txn</a></p></div>
         </div>
-        <br/><br/><br/>
+          : 
+          <div class="container">
+          <div class="image"> <img src="https://cdn.dribbble.com/users/1003768/screenshots/4756331/media/1f03df6cdc341992b32df4ce7b517b70.png" />  </div>
+          <div class="text"><p> {message}</p></div>
+        </div>
+          }
+      </div>
+      <br /><br /><br />
     </div>
   );
 };
 
 
 export default Minter;
- 
