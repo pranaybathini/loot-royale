@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { connectWallet, getCurrentWalletConnected, disconnectWallet, mintNFT } from "./util/interact.js";
+const fs = require("fs");
 
 const Minter = (props) => {
 
@@ -50,22 +51,20 @@ const Minter = (props) => {
       let base64ToString = Buffer.from(base64, "base64").toString();
       console.log(base64ToString);
 
-      let svg = base64ToString;
-      setStatus(svg);
-
       // Check generated metadata.
-      // const uri = await floot.tokenURI(1);
-      // const jsonBase64 = uri.slice(TOKEN_URI_PREFIX.length);
-      // const json = Buffer.from(jsonBase64, "base64").toString();
       const metadata = JSON.parse(base64ToString);
       console.log(metadata);
 
       // Check SVG.
       const imageValue = metadata.image;
+      const SVG_PREFIX = "data:image/svg+xml;base64,";
       const imageBase64 = imageValue.slice(SVG_PREFIX.length);
-      const svg = Buffer.from(imageBase64, "base64").toString();
+      let svg = Buffer.from(imageBase64, "base64").toString();
 
       fs.writeFileSync("test.svg", svg);
+      
+      let svg = base64ToString;
+      setStatus(svg);
 
       let blob = new Blob([svg], { type: 'image/svg+xml' });
       let url = URL.createObjectURL(blob);
