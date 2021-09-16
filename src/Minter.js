@@ -122,7 +122,7 @@ const Minter = (props) => {
         {success ?
           <div class="container">
             <div class="image"> <img src={`data:image/svg+xml;utf8,${status}`} />  </div>
-            <div class="text"><p>Transaction : <a target="_blank" href={message}>NFT #{id} txn</a></p></div>
+            <div class="check"><button><a target="_blank" href={message}>Check your transaction here</a></button></div>
           </div>
           :
           <div class="container">
@@ -141,6 +141,7 @@ const Minter = (props) => {
         ) : (
           <span>Connect Wallet</span>
         )}</button>
+        
 
     </div>
 
