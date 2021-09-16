@@ -33,7 +33,7 @@ img{
 
 
 body {
-  background-color: #DB14;
+  background-color: #fff2cc;
   font-family: Garamond, Baskerville, "Baskerville Old Face", "Hoefler Text", "Times New Roman", serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -112,4 +112,26 @@ a:hover {
 
 #mint:hover {
   background-color: #B34700;
+}
+
+.check {
+  background-color: #990000;
+  color: white;
+  cursor: pointer;
+  border: 2px solid #990000;
+  border-radius: 8px;
+  font-size: 18px;
+  font-family: Garamond, Baskerville, "Baskerville Old Face", "Hoefler Text", "Times New Roman", serif;
+  padding: 8px 8px;
+  width: 25%; 
+  position: fixed;
+  top: 75%;
+  right: 20%;
+}
+
+
+
+.check:hover {
+  background-color: #fff2cc;
+  color: #990000;
 }
