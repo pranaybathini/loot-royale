@@ -53,6 +53,20 @@ const Minter = (props) => {
       let svg = base64ToString;
       setStatus(svg);
 
+      // Check generated metadata.
+      // const uri = await floot.tokenURI(1);
+      // const jsonBase64 = uri.slice(TOKEN_URI_PREFIX.length);
+      // const json = Buffer.from(jsonBase64, "base64").toString();
+      const metadata = JSON.parse(base64ToString);
+      console.log(metadata);
+
+      // Check SVG.
+      const imageValue = metadata.image;
+      const imageBase64 = imageValue.slice(SVG_PREFIX.length);
+      const svg = Buffer.from(imageBase64, "base64").toString();
+
+      fs.writeFileSync("test.svg", svg);
+
       let blob = new Blob([svg], { type: 'image/svg+xml' });
       let url = URL.createObjectURL(blob);
       let image = document.createElement('img');
