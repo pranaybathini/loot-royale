@@ -125,12 +125,12 @@ a:hover {
   margin-left: 15px;
 }
 
-a {
+#axe {
   color: #FFF;
   text-decoration:none; 
 }
 
-a:hover {
+#a:hover {
   color:#ffffff; 
   text-decoration:underline; 
   cursor:pointer;  

@@ -22,10 +22,12 @@ const Minter = (props) => {
 
 
   const connectWalletPressed = async () => {
-    const walletResponse = await connectWallet();
-    setStatus(walletResponse.status);
-    setWallet(walletResponse.address);
-    setConnected(true);
+    if (!connected) {
+      const walletResponse = await connectWallet();
+      setStatus(walletResponse.status);
+      setWallet(walletResponse.address);
+      setConnected(true);
+    }
   };
 
 
@@ -62,7 +64,7 @@ const Minter = (props) => {
       // let svg = Buffer.from(imageBase64, "base64").toString();
 
       // fs.writeFileSync("test.svg", svg);
-      
+
       let svg = base64ToString;
       setStatus(svg);
 
@@ -116,19 +118,18 @@ const Minter = (props) => {
           </ul>
         </div>
         <p>Treasure comes in most unimaginable ways. Here is the pathway that gets you to the treasure. Mint one of our treasure maps and you will be granted what you seek.</p>
-        <p>Claim your random treasure map</p>
-        <button id="mint" onClick={onMintPressed}>Mint</button>
-        <br/>
+<p>Claim your random treasure map</p> <button id="mint" onClick={onMintPressed}>Mint</button>
+        <br />
         {success ?
           <div class="container">
             <div class="image"> <img src={`data:image/svg+xml;utf8,${status}`} />  </div>
-            <button id="mint1"><a target="_blank" href={message}>Check your transaction here</a></button>
+            <button id="mint1"><a id="axe" target="_blank" href={message}>Check your transaction here</a></button>
           </div>
           :
           <div class="container">
             <div class="text"><p> {message}</p></div>
           </div>}
-          <br /><br />
+        <br /><br />
 
       </div>
 
@@ -141,7 +142,7 @@ const Minter = (props) => {
         ) : (
           <span>Connect Wallet</span>
         )}</button>
-        
+
 
     </div>
 

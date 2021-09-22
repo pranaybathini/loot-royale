@@ -2,7 +2,7 @@ import Web3 from 'web3';
 
 const web3 = new Web3(Web3.givenProvider);
 const contractABI = require("../contract-abi.json");
-const contractAddress = "0x59DAB2913703472b9572e1A81075521c20f4844e";
+const contractAddress = "0x29e781157556abAC34d4F1eb57BA89128ffA9032";
 const ids  = Array(10000).fill().map((_, index) => index + 1);
 
 
@@ -136,6 +136,7 @@ export const connectWallet = async () => {
     const transactionParameters = {
       to: contractAddress, // Required except during contract publications.
       from: window.ethereum.selectedAddress, // must match user's active address.
+      value: web3.utils.toHex(1e17),
       data: contract.methods
         .claim(id)
         .encodeABI(),
