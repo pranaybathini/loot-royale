@@ -122,7 +122,7 @@ const Minter = (props) => {
         {success ?
           <div class="container">
             <div class="image"> <img src={`data:image/svg+xml;utf8,${status}`} />  </div>
-            <div class="check"><button><a target="_blank" href={message}>Check your transaction here</a></button></div>
+            <button id="mint1"><a target="_blank" href={message}>Check your transaction here</a></button>
           </div>
           :
           <div class="container">
