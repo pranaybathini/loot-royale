@@ -2,7 +2,7 @@ import Web3 from 'web3';
 
 const web3 = new Web3(Web3.givenProvider);
 const contractABI = require("../contract-abi.json");
-const contractAddress = "0x29e781157556abAC34d4F1eb57BA89128ffA9032";
+const contractAddress = "0x84B71348D927312eb61b9605507d30BbdDbd4987";
 const ids  = Array(10000).fill().map((_, index) => index + 1);
 
 
