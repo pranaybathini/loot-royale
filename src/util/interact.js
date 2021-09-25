@@ -8,6 +8,18 @@ const ids  = Array(10000).fill().map((_, index) => index + 1);
 
 export const connectWallet = async () => {
     if (window.ethereum) {
+      //switch if not connect to required network
+      const chainId = await web3.eth.getChainId();
+      console.log("chain id is "+chainId); 
+      if(chainId!=97){
+        //add in try block to handle if network to switch doesn't exist
+        await window.ethereum.request({
+          method: 'wallet_switchEthereumChain',
+          params: [{ chainId: '0x61' }],
+        });
+      }
+      console.log("Switched network");
+
       try {
         const addressArray = await window.ethereum.request({
           method: "eth_requestAccounts",
