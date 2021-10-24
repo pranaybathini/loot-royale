@@ -479,3 +479,9 @@ svg {
         height: 100%;
     }
 }
+
+img{
+    height: 400px;
+    weight: 400px;
+    border-radius: 10px;
+}

@@ -113,7 +113,7 @@ const Minter = (props) => {
           <li class="act"><a href="#">Discord</a></li>
           <li class="ctn" onClick={connectWalletPressed}>
             {(walletAddress.length > 0) ? (
-              "Connected: " +
+              "" +
               String(walletAddress).substring(0, 6) +
               "..." +
               String(walletAddress).substring(38)
@@ -135,11 +135,9 @@ const Minter = (props) => {
       {success ?
           <div>
             <div> <img src={`data:image/svg+xml;utf8,${status}`} />  </div>
-            <header><div class="ctn"><a id="axe" target="_blank" href={message}>Check your transaction here</a></div></header>
           </div>
           :
           <div class="container">
-            
             <div class="text"><p> {message}</p></div>
           </div>}
 
