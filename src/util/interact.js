@@ -1,7 +1,7 @@
 import Web3 from 'web3';
 const web3 = new Web3(Web3.givenProvider);
 const contractABI = require("../contract-abi.json");
-const contractAddress = "0xb26282d4CE9839e13Ba732fdA13Ef9d915eeD51D";
+const contractAddress = "0x34975D73377397db69eb8dEB09483963AB994294";
 const contract = new web3.eth.Contract(contractABI, contractAddress);
 
 
@@ -131,7 +131,7 @@ export const mintNFT = async () => {
   const transactionParameters = {
     to: contractAddress, // Required except during contract publications.
     from: window.ethereum.selectedAddress, // must match user's active address.
-    value: web3.utils.toHex(1e16),//0.01 of selected network main token
+    value: web3.utils.toHex(1e16),//0.01 of selected network main token, 1**18 == 1, 1**17 == 0.1, 1**16==0.01
     data: contract.methods
       .claim()
       .encodeABI(),
@@ -155,7 +155,7 @@ export const mintNFT = async () => {
     return {
       success: true,
       status:
-        "https://testnet.bscscan.com/tx/" +
+        "https://mumbai.polygonscan.com/tx/" +
         txHash,
       uri: uri,
       id: id,
