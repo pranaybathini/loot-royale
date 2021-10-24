@@ -1,164 +1,481 @@
-@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Mono');
 
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
-
-
-img{
-  padding-top: 40px;
-  height: 400px;
-  width: 400px;
-}
-
-.container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-
-.image {
-  flex-basis: 40%
-}
-
-.text {
-  font-size: 20px;
-  padding-left: 20px;
-}
-
-
-
-body {
-  background-color: #fff2cc;
-  font-family: Garamond, Baskerville, "Baskerville Old Face", "Hoefler Text", "Times New Roman", serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Noto Sans Mono';
 }
 
 ul {
-  list-style-type: none;
-  margin: 0;
+    list-style: none;
 }
 
-li {
-  color:#990000;
-  display: inline;
-  padding: 20px;
+.act {
+    color: #000;
+    text-decoration: none;
+    font-weight: bold;
+    transition: transform 0.1s;
 }
 
-.head {
-  font-size: 18px;
-  text-align: center;
-  padding: 14px;
-  float: none;
-
+.act:active {
+    color: rgb(109, 105, 105);
+    transform: scale(0.9);
 }
 
-a:hover {
-  text-decoration: none;
+.navbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 50px;
+    color: #000;
 }
 
-* {
-  text-align: center;
+.nav-links {
+    display: flex;
+    align-items: center;
 }
 
-.login {
-  background-color: #DC143C;
-  border: none;
-  border-radius: 8px;
-  color: white;
-  padding: 14px 24px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 18px;
-    font-family: Garamond, Baskerville, "Baskerville Old Face", "Hoefler Text", "Times New Roman", serif;
-  position: absolute;
-  top: 16px;
-  right: 16px;
+.nav-links li {
+    margin: 0 15px;
 }
 
-.login:hover {
-  background-color: #BB1133;
+header {
+    width: 98.7vw; 
+    height: 100vh;
+    background: #FFF;
+    background-position: bottom;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.matter {
-  color: #990000;
-  position: absolute;
-  top: 15%;
-  left: 21%;
-  width: 100%;
-  text-align: center;
-  font-size: 20px;
-  max-width: 800px;
+a {
+   text-decoration: none; 
 }
 
-#mint {
-  background-color: #CC5200; 
-  border: none;
-  color: #FFF;
-  padding: 14px 14px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 18px;
-  font-family: Garamond, Baskerville, "Baskerville Old Face", "Hoefler Text", "Times New Roman", serif;
-  width: 35%;
+.header-content {
+    margin-bottom: 120px;
+    margin-top: 60px;
+    color: rgb(109, 105, 105);
+    text-align: center;
+}
+
+.header-content h2 {
+    font-size: 6vmin;
+}
+
+.line {
+    width: 150px;
+    height: 4px;
+    background: #FFF;
+    margin: 10px auto;
+    border-radius: 10px;
+}
+
+.header-content h1 {
+    font-size: 7vmin;
+    margin-top : 0;
+    margin-bottom : 30px;
+}
+
+.ctn {
+    cursor: pointer;
+    padding: 8px 15px;
+    background: #000000;
+    border-radius: 20px;
+    color: rgb(253, 253, 253);
+    font-weight: bold;
+    transition: transform 0.1s;
+}
+
+.ctn:hover {
+    background: #ffffff;
+    color: rgb(0, 0, 0);
+    box-shadow: 2px 2px 5px rgb(0, 0, 0);
+    transform: scale(1.1);
+}
+
+.ctn:active {
+    transform: scale(0.9);
+}
+
+.wallet {
+    padding: 8px 15px;
+    background: #000000;
+    border-radius: 20px;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+}
+
+.wallet:hover {
+    background: #ffffff;
+    color: rgb(0, 0, 0);
+}
+
+.menu-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    cursor: pointer;
+    display: none;
+}
+
+section.type-a {
+    width: 99vw;
+    color: #FFF;
+    background: #000;
+    justify-content: center;
+    align-items: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.title {
+    font-size: 4vmin;
+    color: #FFF;
+    text-align: center;
+}
+
+.story {
+    width: 80%;
+    position: relative;
+    text-align: left;
+    margin: 0 auto;
+}
+
+.heading {
+    margin-bottom: 20px;
+    margin-top: 10px;
+    font-size: 4vmin;
+    font-weight: 800;
+    line-height: 48px;
+    color: rgb(255, 255, 255);
+}
+
+.text1 {
+    margin-bottom: 20px;
+    font-size: 2.5vmin;
+    font-weight: 400;
+    color: rgb(109, 105, 105);
+}
+
+section.type-b {
+    background: #ffffff;
+    color: rgb(0, 0, 0);
+    font-family: 'Noto Sans Mono';
+    min-height: 100vh;
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.quest {
+    font-size: 5vmin;
+    margin: 3rem 0rem;
+}
+
+.faq {
+    width: 100%;
+    max-width: 700px;
+    margin-top: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid rgb(255, 255, 255);
+    cursor: pointer;
+}
+  
+.question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+  
+.question h3 {
+    font-size: 3vmin;
+}
+  
+.answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 1.4s ease;
+}
+  
+.answer p {
+    color: rgb(109, 105, 105);
+    padding-top: 2vmin;
+    line-height: 1.6;
+    font-size: 18px;
+}
+  
+.faq.active .answer {
+    max-height: 300px;
+    animation: fade 1s ease-in-out;
+}
+  
+.faq.active svg {
+    transform: rotate(180deg);
+}
+  
+svg {
+    transition: transform .5s ease-in;
+}
+  
+@keyframes fade {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0px);
+    }
 }
 
 
-#mint1{
-  background-color: #CC5200; 
-  border: none;
-  color: #FFF;
-  padding: 14px 14px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 18px;
-  font-family: Garamond, Baskerville, "Baskerville Old Face", "Hoefler Text", "Times New Roman", serif;
-  width: 35%;
-  margin-left: 15px;
+#roadmap {
+    padding-bottom: 120px;
+    position: relative;
+    background: #000;
+  }
+  
+  .container {
+    max-width: 1280px;
+    width: 100%;
+    margin: 0 auto;
+  }
+  
+  #title {
+    padding-top: 40px;
+    color: #fff;
+    font-size: 4vmin;
+    text-align: center;
+  }
+  
+  .roadmap {
+    margin: 84px 0 0;
+    display: flex;
+  }
+  
+  .block {
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+  }
+  
+  .block h4 {
+    color:rgb(109, 105, 105);
+    margin: 0 0 22px;
+    font-size: 48px;
+  }
+  
+  .roadmap-line {
+    display: flex;
+    align-items: center;
+    margin: 0 0 22px;
+    position: relative;
+  }
+  
+  .roadmap-line-circle {
+    height: 9px;
+    width: 9px;
+    background: #fff;
+    border-radius: 20px;
+    flex-shrink: 0;
+  }
+  
+  .block.first .roadmap-line-line {
+    height: 3px;
+  }
+  
+  .roadmap-line-line {
+    height: 1px;
+    width: 100%;
+    background: #fff;
+  }
+  
+  .block ul {
+    cursor: pointer;
+    max-width: 272px;
+    margin: 0;
+    padding: 20px;
+    background: #fff;
+    border: 1px solid #fff;
+    border-radius: 8px;
+    transition: transform 0.2s;
+  }
+
+  .block ul:hover {
+    transform: scale(1.1);
+    background: rgb(109, 105, 105);
+  }
+  
+  .block ul li:last-child {
+    margin-bottom: 0;
+  }
+  
+  .block ul li {
+    margin: 0 0 20px;
+    display: flex;
+    align-items: baseline;
+  }
+  
+  .block ul li p {
+    font-weight: 400;
+    color: #000;
+    font-size: 1em;
+    line-height: 1.75;
+    margin: 0;
+  }
+  
+  .block ul li p:hover {
+    color:#FFF;
+  }
+
+  .block.active .roadmap-line-circle {
+    background: #000;
+      width: 12px;
+      height: 12px;
+      border: 3px solid #fff;
+      top: -3px;
+      position: relative;
+  }
+  
+  .block.active .roadmap-line-line {
+    position: relative;
+    top: -1px;
+  }
+
+  .block.last .roadmap-line-line {
+  }
+  
+  .roadmap-arrow {
+    fill:#fff;
+    position: absolute;
+    top: -3px;
+    right: -1px;
+  }
+
+
+
+@media only screen and (max-width:850px) {
+    .menu-btn {
+        display: block;
+    }
+    
+    .navbar {
+        padding: 0;
+    }
+
+    .logo {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        width: 100%;
+        height: 100vh;
+        justify-content: center;
+        background: #fff;
+        margin-top: -900px;
+        transition: all 0.5s ease;
+    }
+
+    .mobile-menu {
+        margin-top: 0px;
+    }
+
+    .nav-links li {
+        margin: 20px auto;
+    }
 }
 
-#axe {
-  color: #FFF;
-  text-decoration:none; 
-}
-
-#a:hover {
-  color:#ffffff; 
-  text-decoration:underline; 
-  cursor:pointer;  
-}
-
-
-#mint:hover {
-  background-color: #B34700;
-}
-
-.check {
-  background-color: #990000;
-  color: white;
-  cursor: pointer;
-  border: 2px solid #990000;
-  border-radius: 8px;
-  font-size: 18px;
-  font-family: Garamond, Baskerville, "Baskerville Old Face", "Hoefler Text", "Times New Roman", serif;
-  padding: 8px 8px;
-  width: 25%; 
-  position: fixed;
-  top: 75%;
-  right: 20%;
-}
-
-
-
-.check:hover {
-  background-color: #fff2cc;
-  color: #990000;
+@media only screen and (max-width: 850px) {
+    .container {
+    padding: 0 32px;
+    max-width: 100%;
+    z-index: 2;
+    position: relative;
+    }
+    #roadmap {
+        padding: 48px 0;
+    }
+    .roadmap {
+        margin: 24px 0 0;
+        flex-direction: column;
+    }
+    .block {
+        position: relative;
+        width: 100%;
+    }
+    .roadmap-line {
+        position: absolute;
+        top: 8px;
+        left: 0;
+        height: 100%;
+        width: 20px;
+    }
+    .block h4 {
+        font-size: 28px;
+        margin: 0 0 8px;
+        padding-left: 20px;
+    }
+    .block ul {
+        margin-left: 20px;
+        max-width: 100%;
+        margin-bottom: 20px;
+        padding: 0;
+    }
+    .block ul li {
+        margin: 0;
+        display: flex;
+        align-items: baseline;
+        border-bottom: 1px solid #ffffff;
+        padding: 20px 36px 20px 20px;
+    }
+    .block ul li:last-child {
+        border: none;
+    }
+    .roadmap-line-line {
+        height: 100%;
+        width: 1px;
+    }
+    .block.first .roadmap-line-line {
+        height: 100%;
+        width: 3px;
+    }
+    .roadmap-line-circle {
+        position: absolute;
+        top: 0;
+        left: -3px;
+    }
+    .block.active .roadmap-line-circle {
+        top: 0;
+        position: absolute;
+        z-index: 2;
+    }
+    .block.active .roadmap-line-circle {
+        top: 0;
+        position: absolute;
+        left: -6px;
+    }
+    .roadmap-arrow {
+        position: absolute;
+        top: initial;
+        right: initial;
+        bottom: -7px;
+        transform: rotate(90deg);
+        left: -5px;
+    }
+    .block.last .roadmap-line {
+        height: 100%;
+    }
 }

@@ -1,6 +1,6 @@
 import Web3 from 'web3';
 const web3 = new Web3(Web3.givenProvider);
-const contractABI = require("../contract-abi.json");
+const contractABI = require("./contracts/contractABI.json");
 const contractAddress = "0x34975D73377397db69eb8dEB09483963AB994294";
 const contract = new web3.eth.Contract(contractABI, contractAddress);
 
