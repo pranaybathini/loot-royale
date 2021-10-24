@@ -1682,6 +1682,8 @@ contract Loot is ERC721Enumerable, ReentrancyGuard, Ownable {
     mapping(address => uint256) private lastNftId;
 
     function claim() public payable nonReentrant {
+        uint256 req = 10**16 wei;
+        require(req == msg.value, "Amount required is 0.01 MATIC");
         _tokenIds.increment();
         uint256 tokenId = _tokenIds.current();
         require(tokenId > 0 && tokenId < 7778, "Token ID invalid");
