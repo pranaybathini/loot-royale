@@ -1,7 +1,7 @@
 import Web3 from 'web3';
 const web3 = new Web3(Web3.givenProvider);
-const contractABI = require("../contract-abi.json");
-const contractAddress = "0x34975D73377397db69eb8dEB09483963AB994294";
+const contractABI = require("./contracts/contractABI.json");
+const contractAddress = "0x1E39250effa00344B100F4BFDa8D010CB8a698F9";
 const contract = new web3.eth.Contract(contractABI, contractAddress);
 
 
@@ -11,7 +11,7 @@ export const connectWallet = async () => {
     //switch if not connect to required network
     const chainId = await web3.eth.getChainId();
     console.log("chain id is " + chainId);
-    if (chainId != 80001) {
+    if (chainId !== 80001) {
       //add in try block to handle if network to switch doesn't exist
       await window.ethereum.request({
         method: 'wallet_switchEthereumChain',
@@ -45,7 +45,7 @@ export const connectWallet = async () => {
           <p>
             {" "}
             🦊{" "}
-            <a target="_blank" href={`https://metamask.io/download.html`}>
+            <a target="_blank" rel="noreferrer" href={`https://metamask.io/download.html`}>
               You must install Metamask, a virtual Ethereum wallet, in your
               browser.
             </a>
@@ -87,7 +87,7 @@ export const getCurrentWalletConnected = async () => {
           <p>
             {" "}
             🦊{" "}
-            <a target="_blank" href={`https://metamask.io/download.html`}>
+            <a target="_blank" rel="noreferrer" href={`https://metamask.io/download.html`}>
               You must install Metamask, a virtual Ethereum wallet, in your
               browser.
             </a>
@@ -99,26 +99,11 @@ export const getCurrentWalletConnected = async () => {
 };
 
 
-export const disconnectWallet = async () => {
-  if (window.ethereum) {
-    await window.ethereum.request({
-      method: "eth_requestAccounts",
-      params: [{ eth_accounts: {} }]
-    })
-  }
-};
-
-
-async function loadContract() {
-  return new web3.eth.Contract(contractABI, contractAddress);
-}
-
-
 export const mintNFT = async () => {
 
   const chainId = await web3.eth.getChainId();
   console.log("chain id is " + chainId);
-  if (chainId != 80001) {
+  if (chainId !== 80001) {
     //add in try block to handle if network to switch doesn't exist
     await window.ethereum.request({
       method: 'wallet_switchEthereumChain',
@@ -144,10 +129,10 @@ export const mintNFT = async () => {
     });
 
 
-//TODO: get id from lasted nft minted and then call tokenURI method to display NFT.
+    //TODO: get id from lasted nft minted and then call tokenURI method to display NFT.
 
-    const id = await contract.methods.getLastMintedId( window.ethereum.selectedAddress).call();
-    console.log("Last Minted Id" ,id);
+    const id = await contract.methods.getLastMintedId(window.ethereum.selectedAddress).call();
+    console.log("Last Minted Id", id);
 
     const uri = await contract.methods.tokenURI(id).call();
     console.log(uri);
