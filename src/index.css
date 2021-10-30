@@ -23,6 +23,12 @@ ul {
     transform: scale(0.9);
 }
 
+.pad
+{
+    padding-top: 120px;
+    padding-bottom: 80px;
+}
+
 .navbar {
     position: absolute;
     top: 0;
@@ -43,13 +49,11 @@ ul {
     margin: 0 15px;
 }
 
-header {
-    width: 98.7vw; 
-    height: 100vh;
+.header-div {
     background: #FFF;
     background-position: bottom;
     background-size: cover;
-    display: flex;
+    /* display: flex; */
     align-items: center;
     justify-content: center;
 }
@@ -67,6 +71,7 @@ a {
 
 .header-content h2 {
     font-size: 6vmin;
+
 }
 
 .line {
@@ -480,8 +485,32 @@ svg {
     }
 }
 
-img{
-    height: 400px;
-    weight: 400px;
-    border-radius: 10px;
-}
+.column{
+    float: left;
+    width: 60%;
+    padding: 5px;
+  }
+
+  .column2{
+    float: left;
+    width: 30%;
+    padding: 5px;
+  }
+
+
+  
+  /* Clearfix (clear floats) */
+  .row::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+
+  @media screen and (max-width: 500px) {
+    .column2 {
+      display: none;
+    }
+    .column {
+        width: 100%;
+      }
+  }
