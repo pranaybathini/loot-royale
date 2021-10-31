@@ -22,7 +22,7 @@ const Minter = (props) => {
     }
     fetchData();
     setConnected(false);
-    
+
 
     const menuBtn = document.querySelector('.menu-btn');
     const navlinks = document.querySelector('.nav-links');
@@ -38,9 +38,14 @@ const Minter = (props) => {
       });
     });
 
-    var container = document.getElementById("svgtag");
+    var container1 = document.getElementById("svgtag1");
     const sampleNFTImage = sampleNFT();
-    container.innerHTML = sampleNFTImage;
+    container1.innerHTML = sampleNFTImage;
+
+    var container2 = document.getElementById("svgtag2");
+    container2.innerHTML = sampleNFTImage;
+
+
   }, []);
 
 
@@ -75,8 +80,9 @@ const Minter = (props) => {
       console.log(base64ToString);
 
       let svg = base64ToString;
-      var container = document.getElementById("svgtag");
+      var container = document.getElementById("svgtag1");
       container.innerHTML = svg;
+
       console.log(container);
       console.log("End of print");
       console.log(message);
@@ -105,14 +111,23 @@ const Minter = (props) => {
       </nav>
 
       <div className="row pad">
-        <div className="header-div" className="column">
+        <div className="header-div column">
           <div className="header-content">
             <h2>Survival of the Rarest</h2>
             <h1>Battle Arena</h1>
             <div className="ctn" onClick={onMintPressed}>Gather your loot now</div>
           </div>
         </div>
-        <div id="svgtag" className="column2">   </div>
+        <div className=" column2">
+          <div>
+            <div className=" card" >
+              <div id="svgtag1" className="front">
+              </div>
+              <div id="svgtag2" className="back">
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
       <section className="type-a">
