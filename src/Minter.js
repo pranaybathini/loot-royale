@@ -90,7 +90,7 @@ const Minter = (props) => {
   };
 
   return (
-    <div className="pad">
+    <div className="pad-main">
       <nav className="navbar">
         <h1 className="logo">Battle Loot</h1>
         <ul className="nav-links">
@@ -115,7 +115,7 @@ const Minter = (props) => {
           <div className="header-content">
             <h2>Survival of the Rarest</h2>
             <h1>Battle Arena</h1>
-            <div className="ctn" onClick={onMintPressed}>Gather your loot now</div>
+            <div><button onClick={onMintPressed} class="custom-btn btn-14">Gather your loot now</button></div>
           </div>
         </div>
         <div className=" column2">
