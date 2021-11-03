@@ -362,8 +362,6 @@ svg {
     top: -1px;
   }
 
-  .block.last .roadmap-line-line {
-  }
   
   .roadmap-arrow {
     fill:#fff;
@@ -378,7 +376,7 @@ svg {
     .menu-btn {
         display: block;
     }
-    
+
     .navbar {
         padding: 0;
     }
@@ -561,8 +559,8 @@ div svg{
 
 .custom-btn {
   width: 70%;
-  height: 40px;
-  padding: 10px 25px;
+  height: 50px;
+  padding: 10px 10px;
   border: 2px solid #000;
   font-weight: bold;
   background: transparent;
