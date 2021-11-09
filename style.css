@@ -23,17 +23,6 @@ ul {
     transform: scale(0.9);
 }
 
-.pad
-{
-    padding-top: 120px;
-    padding-bottom: 80px;
-}
-
-.pad-main{
-  padding-top: 120px;
-
-}
-
 .navbar {
     position: absolute;
     top: 0;
@@ -54,13 +43,21 @@ ul {
     margin: 0 15px;
 }
 
-.header-div {
+header {
+    width: 98.7vw; 
+    height: 100vh;
     background: #FFF;
     background-position: bottom;
     background-size: cover;
-    /* display: flex; */
+    display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: left;
+}
+
+header .card {
+    padding-left: 40px;
+    align-items: center;
+    justify-content: right;
 }
 
 a {
@@ -72,11 +69,12 @@ a {
     margin-top: 60px;
     color: rgb(109, 105, 105);
     text-align: center;
+    padding-left: 120px;
+    padding-right: 40px;
 }
 
 .header-content h2 {
     font-size: 6vmin;
-
 }
 
 .line {
@@ -255,7 +253,7 @@ svg {
     background: #000;
   }
   
-  .container {
+#roadmap .container {
     max-width: 1280px;
     width: 100%;
     margin: 0 auto;
@@ -361,7 +359,6 @@ svg {
     position: relative;
     top: -1px;
   }
-
   
   .roadmap-arrow {
     fill:#fff;
@@ -370,13 +367,107 @@ svg {
     right: -1px;
   }
 
+  
+  footer .container {
+    justify-content: space-between;
+    margin: 70px auto;
+  }
+  
+  footer .container {
+    max-width: 1160px;
+    padding: 0 60px;
+  }
+  
+  footer .infos {
+    width: 44.44%;
+    font-size: 20px;
+    justify-content: space-between;
+  }
+  
+  .column {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .row {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  footer .pic {
+    display: block;
+    width: 50px;
+    height: 50px;
+    background: url(images/logo.png) no-repeat;
+    background-size: cover;
+  }
+  
+  .typo {
+    font-weight: 700;
+    margin-top: 10px;
+    margin-left: 20px;
+  }
+  
+  .baseline {
+    font-weight: 300;
+    margin-top: 10px;
+  }
+  
+  p {
+    margin: 30px 0 0;
+  }
+  
+  footer .right {
+    width: 22.22%;
+    justify-content: space-between; 
+  }
+  
+  footer .nav a {
+    text-decoration: none;
+    font-size: 20px;
+    transition: all .3s ease-in-out;
+  }
+  
+  footer .social {
+    margin-top: 40px;
+  }
+  
+  footer .link {
+    border: 1px solid;
+    width: 44px;
+    height: 44px;
+    margin-right: 15px;
+    box-shadow: inset 0 0 0;
+    transition: all .3s ease-in-out;
+  }
+  
+  footer .link a {
+    width: 44px;
+    height: 44px;
+    display: block;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  footer .twitter {
+    background: url() no-repeat center;
+  }
+  
+  footer .opensea {
+    background: url() no-repeat center;
+  }
+  
+  footer .discord {
+    background: url() no-repeat center;
+  }
+
 
 
 @media only screen and (max-width:850px) {
     .menu-btn {
         display: block;
     }
-
+    
     .navbar {
         padding: 0;
     }
@@ -486,119 +577,4 @@ svg {
     .block.last .roadmap-line {
         height: 100%;
     }
-}
-
-.column{
-    float: left;
-    width: 60%;
-    padding: 5px;
-  }
-
-  .column2{
-    float: left;
-    width: 30%;
-    padding: 5px;
-  }
-
-
-  
-  /* Clearfix (clear floats) */
-  .row::after {
-    content: "";
-    clear: both;
-    display: table;
-  }
-
-  @media screen and (max-width: 500px) {
-    .column2 {
-      display: none;
-    }
-    .column {
-        width: 100%;
-      }
-  }
-
-  .card{
-    cursor: pointer;
-    width: 340px;
-    height: 480px;
-  }
-
-  .front,.back{
-    overflow: hidden;
-    backface-visibility: hidden;
-    position: absolute;
-    transition: transform .6s linear;
-  }
-
-
-  
-  .front{
-    transform: perspective(600px) rotateY(0deg);
-  }
-  .back{
-    /* background: #f1f1f1; */
-    transform: perspective(600px) rotateY(180deg);
-  }
-
-  .card:hover > .front{
-  transform: perspective(600px) rotateY(-180deg);
-}
-.card:hover > .back{
-  transform: perspective(600px) rotateY(0deg);
-}
-
-#svgtag1 svg, #svgtag2 svg{
-    width: 400px;
-}
-
-div svg{
-  width: auto;
-}
-
-
-.custom-btn {
-  width: 70%;
-  height: 50px;
-  padding: 10px 10px;
-  border: 2px solid #000;
-  font-weight: bold;
-  background: transparent;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  position: relative;
-  display: inline-block;
-  border-radius: 30px;
-  font-size: 16px;
-}
-
-.btn-14 {
-  background: #000;
- color: #fff;
- z-index: 1;
-}
-.btn-14:after {
- position: absolute;
- content: "";
- width: 100%;
- height: 0;
- top: 0;
- left: 0;
- z-index: -1;
- background: #FFF;
- transition: all 0.3s ease;
-}
-.btn-14:hover {
- color: #000;
- border-radius: 30px;
-}
-.btn-14:hover:after {
- top: auto;
- bottom: 0;
- height: 100%;
- border-radius: 30px;
-
-}
-.btn-14:active {
- top: 2px;
 }
