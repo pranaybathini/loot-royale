@@ -116,8 +116,8 @@ const Minter = (props) => {
           <div className="header-content">
             <h2>Survival of the Rarest</h2>
             <h1>Battle Arena</h1>
-            <div><button onClick={onMintPressed} class="custom-btn btn-14">Gather your loot now</button></div><br/>
-            <div id = "check-txn"><button onClick={()=>{window.open(message)}}  class="custom-btn btn-14">Check your transaction</button></div>
+            <div><button onClick={onMintPressed} className="custom-btn btn-14">Gather your loot now</button></div><br/>
+            <div id = "check-txn"><button onClick={()=>{window.open(message)}}  className="custom-btn btn-14">Check your transaction</button></div>
           </div>
         </div>
         <div className=" column2">
