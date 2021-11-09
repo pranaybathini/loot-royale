@@ -29,6 +29,11 @@ ul {
     padding-bottom: 80px;
 }
 
+.pad-main{
+  padding-top: 120px;
+
+}
+
 .navbar {
     position: absolute;
     top: 0;
@@ -357,8 +362,6 @@ svg {
     top: -1px;
   }
 
-  .block.last .roadmap-line-line {
-  }
   
   .roadmap-arrow {
     fill:#fff;
@@ -373,7 +376,7 @@ svg {
     .menu-btn {
         display: block;
     }
-    
+
     .navbar {
         padding: 0;
     }
@@ -514,3 +517,88 @@ svg {
         width: 100%;
       }
   }
+
+  .card{
+    cursor: pointer;
+    width: 340px;
+    height: 480px;
+  }
+
+  .front,.back{
+    overflow: hidden;
+    backface-visibility: hidden;
+    position: absolute;
+    transition: transform .6s linear;
+  }
+
+
+  
+  .front{
+    transform: perspective(600px) rotateY(0deg);
+  }
+  .back{
+    /* background: #f1f1f1; */
+    transform: perspective(600px) rotateY(180deg);
+  }
+
+  .card:hover > .front{
+  transform: perspective(600px) rotateY(-180deg);
+}
+.card:hover > .back{
+  transform: perspective(600px) rotateY(0deg);
+}
+
+#svgtag1 svg, #svgtag2 svg{
+    width: 400px;
+}
+
+div svg{
+  width: auto;
+}
+
+
+.custom-btn {
+  width: 70%;
+  height: 50px;
+  padding: 10px 10px;
+  border: 2px solid #000;
+  font-weight: bold;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  border-radius: 20px;
+  font-size: 15px;
+}
+
+.btn-14 {
+  background: #000;
+ color: #fff;
+ z-index: 1;
+}
+.btn-14:after {
+ position: absolute;
+ content: "";
+ width: 100%;
+ height: 0;
+ top: 0;
+ left: 0;
+ z-index: -1;
+ background: #FFF;
+ transition: all 0.3s ease;
+}
+.btn-14:hover {
+ color: #000;
+ border-radius: 20px;
+}
+.btn-14:hover:after {
+ top: auto;
+ bottom: 0;
+ height: 100%;
+ border-radius: 20px;
+
+}
+.btn-14:active {
+ top: 2px;
+}

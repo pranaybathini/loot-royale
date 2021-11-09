@@ -8,7 +8,7 @@ const Minter = (props) => {
   //State variables
   const [walletAddress, setWallet] = useState("");
   const [connected, setConnected] = useState(false);
-  const [message, setMessage] = useState('');
+  const [message, setMessage] = useState("");
 
   useEffect(() => {
 
@@ -22,7 +22,7 @@ const Minter = (props) => {
     }
     fetchData();
     setConnected(false);
-    
+
 
     const menuBtn = document.querySelector('.menu-btn');
     const navlinks = document.querySelector('.nav-links');
@@ -38,9 +38,16 @@ const Minter = (props) => {
       });
     });
 
-    var container = document.getElementById("svgtag");
+    var container1 = document.getElementById("svgtag1");
     const sampleNFTImage = sampleNFT();
-    container.innerHTML = sampleNFTImage;
+    container1.innerHTML = sampleNFTImage;
+
+    var container2 = document.getElementById("svgtag2");
+    container2.innerHTML = sampleNFTImage;
+
+    var txnContainer = document.getElementById("check-txn");
+    txnContainer.style.display = "none";
+
   }, []);
 
 
@@ -61,7 +68,6 @@ const Minter = (props) => {
     console.log('Wallet Response after mint', walletResponse);
 
     //Update UI with mint status
-    setMessage(walletResponse.status);
 
     //on successful mint, display minted NFT
     if (walletResponse.success) {
@@ -75,18 +81,19 @@ const Minter = (props) => {
       console.log(base64ToString);
 
       let svg = base64ToString;
-      var container = document.getElementById("svgtag");
+      var container = document.getElementById("svgtag1");
       container.innerHTML = svg;
-      console.log(container);
-      console.log("End of print");
-      console.log(message);
+
+      setMessage(walletResponse.status);
+      var txnContainer = document.getElementById("check-txn");
+      txnContainer.style.display = "block";
     }
   };
 
   return (
-    <div className="pad">
+    <div className="pad-main">
       <nav className="navbar">
-        <h1 className="logo">Battle Loot</h1>
+        <h1 className="logo">Battle Royale</h1>
         <ul className="nav-links">
           <li className="act"><a href="https://www.twitter.com/akshayincharge">Opensea</a></li>
           <li className="act"><a href="https://www.twitter.com/akshayincharge">Twitter</a></li>
@@ -105,14 +112,24 @@ const Minter = (props) => {
       </nav>
 
       <div className="row pad">
-        <div className="header-div" className="column">
+        <div className="header-div column">
           <div className="header-content">
             <h2>Survival of the Rarest</h2>
             <h1>Battle Arena</h1>
-            <div className="ctn" onClick={onMintPressed}>Gather your loot now</div>
+            <div><button onClick={onMintPressed} class="custom-btn btn-14">Gather your loot now</button></div><br/>
+            <div id = "check-txn"><button onClick={()=>{window.open(message)}}  class="custom-btn btn-14">Check your transaction</button></div>
           </div>
         </div>
-        <div id="svgtag" className="column2">   </div>
+        <div className=" column2">
+          <div>
+            <div className=" card" >
+              <div id="svgtag1" className="front">
+              </div>
+              <div id="svgtag2" className="back">
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
       <section className="type-a">
