@@ -568,8 +568,8 @@ div svg{
   transition: all 0.3s ease;
   position: relative;
   display: inline-block;
-  border-radius: 20px;
-  font-size: 15px;
+  border-radius: 30px;
+  font-size: 16px;
 }
 
 .btn-14 {
@@ -590,13 +590,13 @@ div svg{
 }
 .btn-14:hover {
  color: #000;
- border-radius: 20px;
+ border-radius: 30px;
 }
 .btn-14:hover:after {
  top: auto;
  bottom: 0;
  height: 100%;
- border-radius: 20px;
+ border-radius: 30px;
 
 }
 .btn-14:active {
