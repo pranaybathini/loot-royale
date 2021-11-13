@@ -1440,7 +1440,7 @@ library BetweenCode{
 library AfterCode{
      function getLast(string memory tokenId) public pure returns (string memory){
             
-            string memory before = '</text>         </g>         <g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="miter" stroke-miterlimit="2" transform="matrix(0.999391,0.0348995,-0.0348995,0.999391,36.1038,24.3115)"></g>         <g fill="#c08a53" fill-opacity="1" stroke="none" transform="matrix(0.999391,0.0348995,-0.0348995,0.999391,259.339,50.118)">             <path vector-effect="none" fill-rule="evenodd" d="M2,0 L71,0 C72.1046,0 73,0.89543 73,2 L73,26 C73,27.1046 72.1046,28 71,28 L2,28 C0.89543,28 0,27.1046 0,26 L0,2 C0,0.89543 0.89543,0 2,0 "/>         </g>         <g fill="#ffffff" fill-opacity="1" stroke="#ffffff" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.999391,0.0348995,-0.0348995,0.999391,259.339,50.118)">             <text fill="#ffffff" fill-opacity="1" stroke="none" xml:space="preserve" x="5" y="21" font-family="Arial" font-size="19" font-weight="400" font-style="normal">#';
+            string memory before = '</text>         </g>         <g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="miter" stroke-miterlimit="2" transform="matrix(0.999391,0.0348995,-0.0348995,0.999391,36.1038,24.3115)"></g>         <g fill="#c08a53" fill-opacity="1" stroke="none" transform="matrix(0.999391,0.0348995,-0.0348995,0.999391,259.339,50.118)">             <path vector-effect="none" fill-rule="evenodd" d="M2,0 L71,0 C72.1046,0 73,0.89543 73,2 L73,26 C73,27.1046 72.1046,28 71,28 L2,28 C0.89543,28 0,27.1046 0,26 L0,2 C0,0.89543 0.89543,0 2,0 "/>         </g>         <g fill="#ffffff" fill-opacity="1" stroke="#ffffff" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.999391,0.0348995,-0.0348995,0.999391,259.339,50.118)">             <text fill="#ffffff" fill-opacity="1" stroke="none" xml:space="preserve" x="10" y="21" font-family="Arial" font-size="19" font-weight="400" font-style="normal">#';
             string memory afterString  = '</text>         </g>         <g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="miter" stroke-miterlimit="2" transform="matrix(0.999391,0.0348995,-0.0348995,0.999391,36.1038,24.3115)"></g>         <g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="miter" stroke-miterlimit="2" transform="matrix(1,0,0,1,0,0)"></g>         <g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="miter" stroke-miterlimit="2" transform="matrix(1,0,0,1,0,0)"></g>         <g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="miter" stroke-miterlimit="2" transform="matrix(1,0,0,1,0,0)"></g>         <g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="miter" stroke-miterlimit="2" transform="matrix(1,0,0,1,0,0)"></g>     </g> </svg>';
             return string(abi.encodePacked(before,tokenId,afterString));
     }
@@ -1677,10 +1677,12 @@ contract Loot is ERC721Enumerable, ReentrancyGuard, Ownable {
     mapping(address => uint256) private lastNftId;
 
     function claim() public payable nonReentrant {
+        //10**16 == 0.01, 10**18 == 1, 10**19 = 10
+        //no min requirement for first 100.
         require(10**16 wei == msg.value, "Amount required is 0.01 MATIC");
         _tokenIds.increment();
         uint256 tokenId = _tokenIds.current();
-        require(tokenId > 0 && tokenId < 7778, "Token ID invalid");
+        require(tokenId > 0 && tokenId <= 10000, "Token ID invalid");
         address payable contractOwner = payable(owner());
         bool sent = contractOwner.send(msg.value);
         require(sent, "Failed to send Ether");
@@ -1688,11 +1690,9 @@ contract Loot is ERC721Enumerable, ReentrancyGuard, Ownable {
         lastNftId[_msgSender()] = tokenId;
     }
     
-    function getLastMintedId(address owner) public view returns (uint256){
-        return lastNftId[owner];
+    function getLastMintedId() public view returns (uint256){
+        return _tokenIds.current()+1;
     } 
-    
-    
 
     function toString(uint256 value) internal pure returns (string memory) {
         if (value == 0) {
@@ -1713,5 +1713,5 @@ contract Loot is ERC721Enumerable, ReentrancyGuard, Ownable {
         return string(buffer);
     }
     
-    constructor() ERC721("Loot", "LOOT") Ownable() {}
+    constructor() ERC721("Loot Royale", "BLOOT") Ownable() {}
 }
