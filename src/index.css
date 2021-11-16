@@ -25,8 +25,8 @@ ul {
 
 .pad
 {
-    padding-top: 120px;
-    padding-bottom: 80px;
+    padding-top: 50px;
+    padding-bottom: 209px;
 }
 
 .pad-main{
@@ -139,7 +139,6 @@ a {
 }
 
 section.type-a {
-    width: 99vw;
     color: #FFF;
     background: #000;
     justify-content: center;

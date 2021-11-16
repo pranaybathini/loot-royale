@@ -1,7 +1,7 @@
 import Web3 from 'web3';
 const web3 = new Web3(Web3.givenProvider);
 const contractABI = require("./contracts/contractABI.json");
-const contractAddress = "0x1E39250effa00344B100F4BFDa8D010CB8a698F9";
+const contractAddress = "0x7F0307981cbD6D5c5598552266e3d537141C8890";
 const contract = new web3.eth.Contract(contractABI, contractAddress);
 
 
@@ -123,6 +123,7 @@ export const mintNFT = async () => {
   };
 
   try {
+    console.log(transactionParameters);
     const txHash = await window.ethereum.request({
       method: "eth_sendTransaction",
       params: [transactionParameters],
@@ -131,7 +132,7 @@ export const mintNFT = async () => {
 
     //TODO: get id from lasted nft minted and then call tokenURI method to display NFT.
 
-    const id = await contract.methods.getLastMintedId(window.ethereum.selectedAddress).call();
+    const id = await contract.methods.getLastMintedId().call();
     console.log("Last Minted Id", id);
 
     const uri = await contract.methods.tokenURI(id).call();

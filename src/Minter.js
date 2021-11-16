@@ -42,6 +42,7 @@ const Minter = (props) => {
     const sampleNFTImage = sampleNFT();
     container1.innerHTML = sampleNFTImage;
 
+
     var container2 = document.getElementById("svgtag2");
     container2.innerHTML = sampleNFTImage;
 
@@ -93,7 +94,7 @@ const Minter = (props) => {
   return (
     <div className="pad-main">
       <nav className="navbar">
-        <h1 className="logo">Loot Royale</h1>
+        <h1 className="logo"><b>Loot Royale</b></h1>
         <ul className="nav-links">
           <li className="act"><a href="https://www.twitter.com/akshayincharge">Opensea</a></li>
           <li className="act"><a href="https://www.twitter.com/akshayincharge">Twitter</a></li>
@@ -114,8 +115,8 @@ const Minter = (props) => {
       <div className="row pad">
         <div className="header-div column">
           <div className="header-content">
-            <h2>Survival of the Rarest</h2>
-            <h1>Battle Arena</h1>
+            <h2><b>Survival of the Rarest</b></h2>
+            <h1><b>Battle Arena</b></h1>
             <div><button onClick={onMintPressed} className="custom-btn btn-14">Gather your loot now</button></div><br />
             <div id="check-txn"><button onClick={() => { window.open(message) }} className="custom-btn btn-14">Check your transaction</button></div>
           </div>
