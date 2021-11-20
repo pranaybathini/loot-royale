@@ -25,8 +25,8 @@ ul {
 
 .pad
 {
-    padding-top: 120px;
-    padding-bottom: 80px;
+    padding-top: 50px;
+    padding-bottom: 209px;
 }
 
 .pad-main{
@@ -48,6 +48,7 @@ ul {
 .nav-links {
     display: flex;
     align-items: center;
+    position: relative;
 }
 
 .nav-links li {
@@ -101,6 +102,7 @@ a {
     color: rgb(253, 253, 253);
     font-weight: bold;
     transition: transform 0.1s;
+    
 }
 
 .ctn:hover {
@@ -137,7 +139,6 @@ a {
 }
 
 section.type-a {
-    width: 99vw;
     color: #FFF;
     background: #000;
     justify-content: center;
@@ -385,6 +386,7 @@ svg {
         position: absolute;
         top: 20px;
         left: 20px;
+        z-index: 1;
     }
 
     .nav-links {
@@ -566,7 +568,6 @@ div svg{
   background: transparent;
   cursor: pointer;
   transition: all 0.3s ease;
-  position: relative;
   display: inline-block;
   border-radius: 30px;
   font-size: 16px;
@@ -591,6 +592,8 @@ div svg{
 .btn-14:hover {
  color: #000;
  border-radius: 30px;
+ position: relative;
+
 }
 .btn-14:hover:after {
  top: auto;
@@ -602,3 +605,201 @@ div svg{
 .btn-14:active {
  top: 2px;
 }
+
+footer .container {
+  justify-content: space-between;
+  margin: 70px auto;
+}
+
+footer .container {
+  max-width: 1160px;
+  padding: 0 60px;
+}
+
+footer .infos {
+  width: 44.44%;
+  font-size: 20px;
+  justify-content: space-between;
+}
+
+
+.rowx{
+  display: flex;
+  flex-direction: row;
+}
+
+.typo {
+  font-size: 30px;
+  font-weight: 700;
+  margin-top: 10px;
+  margin-left: 20px;
+}
+
+.baseline {
+  font-weight: 300;
+  margin-top: 10px;
+}
+
+footer .pic {
+  display: block;
+  width: 60px;
+  height: 60px;
+  background: url(images/logo.png) no-repeat;
+  background-size: cover;
+}
+
+
+@media (max-width: 500px) {
+  footer .infos {
+      order: 2;
+      padding-right: 0;
+  }
+  }
+  
+  @media (max-width: 960px) {
+  footer .infos {
+      width: auto;
+  }
+  }
+
+  .columnx {
+    display: flex;
+    flex-direction: column;
+  }
+
+
+  .cid{
+    visibility: visible; opacity:1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: opacity 0.8s cubic-bezier(0.5, 0, 0, 1) 0.2s, transform 0.8s cubic-bezier(0.5, 0, 0, 1) 0.2s;}
+
+  .rcd{
+    visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: opacity 0.8s cubic-bezier(0.5, 0, 0, 1) 0.5s, transform 0.8s cubic-bezier(0.5, 0, 0, 1) 0.5s;
+  }  
+
+  .baseline {
+    font-weight: 300;
+    margin-top: 10px;
+  }
+
+
+  footer .right {
+    width: 22.22%;
+    justify-content: space-between; 
+  }
+  
+footer .nav {
+  margin-top: 20px;
+}
+
+  footer .nav a {
+    color: #000;
+    text-decoration: none;
+    font-size: 20px;
+    transition: all .3s ease-in-out;
+  }
+  
+  footer .social {
+    margin-top: 40px;
+  }
+  
+  footer .link {
+    border: 1px solid #000;
+    width: 44px;
+    height: 44px;
+    margin-right: 15px;
+    box-shadow: inset 0 0 0 #000;
+    transition: all .3s ease-in-out;
+  }
+  
+  footer .link a {
+    width: 44px;
+    height: 44px;
+    display: block;
+    justify-content: center;
+    align-items: center;
+  }
+
+  footer .link a:hover {
+    background-color: rgb(207, 205, 205);
+  }
+  
+  footer .twitter {
+    background: url(images/twitter.svg) no-repeat center;
+  }
+
+  footer .discord {
+    background: url(images/discord.svg) no-repeat center;
+  }
+
+  footer .opensea {
+    background: url(images/opensea.svg) no-repeat center;
+  }
+
+
+@media (max-width: 500px) {
+footer .container {
+    flex-direction: column;
+    margin: 60px auto;
+}
+}
+
+@media (max-width: 500px) {
+footer .infos {
+    order: 2;
+    padding-right: 0;
+}
+}
+
+@media (max-width: 960px) {
+footer .infos {
+    width: auto;
+}
+}
+
+@media (max-width: 500px) {
+footer .pic {
+  padding: 10px;
+  margin-left: -20px;
+  margin-top: 20px;
+}
+}
+
+@media (max-width: 960px) {
+footer .baseline {
+    padding: 20px 0px;
+    margin-top: 100px;
+    line-height: 2.5rem;
+}
+}
+
+@media (max-width: 500px) {
+footer .copyright {
+    margin-top: 25px;
+}
+}
+
+@media (max-width: 960px) {
+footer .copyright {
+    line-height: 2rem;
+}
+}
+
+@media (max-width: 960) {
+footer .right {
+    width: auto;
+}
+}
+
+@media (max-width: 500px) {
+footer .nav {
+    display: none;
+}
+}
+
+@media (max-width: 500px) {
+footer .social {
+    margin-top: 0;
+    margin-left: 39px;
+    margin-bottom: 40px;
+}
+}
+

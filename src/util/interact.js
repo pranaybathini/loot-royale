@@ -1,8 +1,9 @@
 import Web3 from 'web3';
 const web3 = new Web3(Web3.givenProvider);
 const contractABI = require("./contracts/contractABI.json");
-const contractAddress = "0x1E39250effa00344B100F4BFDa8D010CB8a698F9";
+const contractAddress = "0x7F0307981cbD6D5c5598552266e3d537141C8890";
 const contract = new web3.eth.Contract(contractABI, contractAddress);
+
 
 
 export const connectWallet = async () => {
@@ -13,46 +14,69 @@ export const connectWallet = async () => {
     console.log("chain id is " + chainId);
     if (chainId !== 80001) {
       //add in try block to handle if network to switch doesn't exist
-      await window.ethereum.request({
-        method: 'wallet_switchEthereumChain',
-        params: [{ chainId: '0x13881' }],
-      });
-    }
-    console.log("Switched network");
+      try {
+        await window.ethereum.request({
+          method: 'wallet_switchEthereumChain',
+          params: [{ chainId: '0x13881' }],
+        });
+      } catch (switchError) {
+        if (switchError.code === 4902 ) {
+          try {
+            await window.ethereum.request({
+              method: 'wallet_addEthereumChain',
+              params: [{
+                chainId: '0x13881',
+                chainName: 'Polygon Testnet',
+                nativeCurrency: {
+                  name: 'MATIC',
+                  symbol: 'MATIC',
+                  decimals: 18
+                },
+                rpcUrls: ['https://rpc-mumbai.maticvigil.com/'],
+                blockExplorerUrls: ['https://mumbai.polygonscan.com/']
+              }],
+            });
+          } catch (addError) {
+            // handle "add" error
+          }
+        }
+      }
+      console.log("Switched network");
 
-    // connect site to metamask
-    try {
-      const addressArray = await window.ethereum.request({
-        method: "eth_requestAccounts",
-      });
-      const obj = {
-        status: "👆🏽 Write a message in the text-field above.",
-        address: addressArray[0],
-        connected: true
-      };
-      return obj;
-    } catch (err) {
+      // connect site to metamask
+      try {
+        const addressArray = await window.ethereum.request({
+          method: "eth_requestAccounts",
+        });
+        const obj = {
+          status: "👆🏽 Write a message in the text-field above.",
+          address: addressArray[0],
+          connected: true
+        };
+        return obj;
+      } catch (err) {
+        return {
+          address: "",
+          status: "😥 " + err.message,
+        };
+      }
+    } else {
       return {
         address: "",
-        status: "😥 " + err.message,
+        status: (
+          <span>
+            <p>
+              {" "}
+              🦊{" "}
+              <a target="_blank" rel="noreferrer" href={`https://metamask.io/download.html`}>
+                You must install Metamask, a virtual Ethereum wallet, in your
+                browser.
+              </a>
+            </p>
+          </span>
+        ),
       };
     }
-  } else {
-    return {
-      address: "",
-      status: (
-        <span>
-          <p>
-            {" "}
-            🦊{" "}
-            <a target="_blank" rel="noreferrer" href={`https://metamask.io/download.html`}>
-              You must install Metamask, a virtual Ethereum wallet, in your
-              browser.
-            </a>
-          </p>
-        </span>
-      ),
-    };
   }
 };
 
@@ -123,6 +147,7 @@ export const mintNFT = async () => {
   };
 
   try {
+    console.log(transactionParameters);
     const txHash = await window.ethereum.request({
       method: "eth_sendTransaction",
       params: [transactionParameters],
@@ -131,7 +156,7 @@ export const mintNFT = async () => {
 
     //TODO: get id from lasted nft minted and then call tokenURI method to display NFT.
 
-    const id = await contract.methods.getLastMintedId(window.ethereum.selectedAddress).call();
+    const id = await contract.methods.getLastMintedId().call();
     console.log("Last Minted Id", id);
 
     const uri = await contract.methods.tokenURI(id).call();
@@ -146,6 +171,8 @@ export const mintNFT = async () => {
       id: id,
     };
   } catch (error) {
+    console.log(error.code)
+  
     return {
       success: false,
       status: "😥 Something went wrong: " + error.message,
@@ -154,3 +181,6 @@ export const mintNFT = async () => {
     };
   }
 };
+
+
+
