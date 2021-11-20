@@ -1,14 +1,12 @@
 import { useEffect, useState } from "react";
-import { connectWallet, getCurrentWalletConnected, mintNFT } from "./util/interact.js";
+import { connectWallet, getCurrentWalletConnected } from "./util/interact.js";
 import logo from "./images/menu-button.png";
-import { sampleNFT } from "./image.js";
 
 const Minter = (props) => {
 
   //State variables
   const [walletAddress, setWallet] = useState("");
   const [connected, setConnected] = useState(false);
-  const [message, setMessage] = useState("");
 
   useEffect(() => {
 
@@ -38,16 +36,9 @@ const Minter = (props) => {
       });
     });
 
-    var container1 = document.getElementById("svgtag1");
-    const sampleNFTImage = sampleNFT();
-    container1.innerHTML = sampleNFTImage;
+  
 
-
-    var container2 = document.getElementById("svgtag2");
-    container2.innerHTML = sampleNFTImage;
-
-    var txnContainer = document.getElementById("check-txn");
-    txnContainer.style.display = "none";
+  
 
   }, []);
 
@@ -62,43 +53,15 @@ const Minter = (props) => {
     }
   };
 
-  const onMintPressed = async () => {
-
-    //mint nft call
-    const walletResponse = await mintNFT();
-    console.log('Wallet Response after mint', walletResponse);
-
-    //Update UI with mint status
-
-    //on successful mint, display minted NFT
-    if (walletResponse.success) {
-      var obj = JSON.parse(walletResponse.uri);
-      console.log(obj.name);
-
-      let base64 = obj.image.split(",")[1];
-      console.log(base64);
-
-      let base64ToString = Buffer.from(base64, "base64").toString();
-      console.log(base64ToString);
-
-      let svg = base64ToString;
-      var container = document.getElementById("svgtag1");
-      container.innerHTML = svg;
-
-      setMessage(walletResponse.status);
-      var txnContainer = document.getElementById("check-txn");
-      txnContainer.style.display = "block";
-    }
-  };
 
   return (
     <div className="pad-main">
       <nav className="navbar">
         <h1 className="logo"><b>Loot Royale</b></h1>
         <ul className="nav-links">
-          <li className="act"><a href="https://www.twitter.com/akshayincharge">Opensea</a></li>
-          <li className="act"><a href="https://www.twitter.com/akshayincharge">Twitter</a></li>
-          <li className="act"><a href="https://www.twitter.com/akshayincharge">Discord</a></li>
+          <li className="act"><a href="https://twitter.com/lootroyale">Opensea</a></li>
+          <li className="act"><a href="https://twitter.com/lootroyale">Twitter</a></li>
+          <li className="act"><a href="https://twitter.com/lootroyale">Discord</a></li>
           <li className="ctn" onClick={connectWalletPressed}>
             {(walletAddress.length > 0) ? (
               "" +
@@ -113,22 +76,11 @@ const Minter = (props) => {
       </nav>
 
       <div className="row pad">
-        <div className="header-div column">
+        <div className="header-div ">
           <div className="header-content">
             <h2><b>Survival of the Rarest</b></h2>
             <h1><b>Battle Arena</b></h1>
-            <div><button onClick={onMintPressed} className="custom-btn btn-14">Gather your loot now</button></div><br />
-            <div id="check-txn"><button onClick={() => { window.open(message) }} className="custom-btn btn-14">Check your transaction</button></div>
-          </div>
-        </div>
-        <div className=" column2">
-          <div>
-            <div className=" card" >
-              <div id="svgtag1" className="front">
-              </div>
-              <div id="svgtag2" className="back">
-              </div>
-            </div>
+            <h2>Loading...</h2>
           </div>
         </div>
       </div>
@@ -144,38 +96,14 @@ const Minter = (props) => {
           <p className="text1">Battle Loot is the randomly generate battle royale loot for RPG players. Images are omitted for
             reducing blockchain complexity</p>
           <h3 className="heading">The Story</h3>
-          <p className="text1">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
-            ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-            deserunt mollit anim id est laborum.</p>
-          <p className="text1">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
-            ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-            deserunt mollit anim id est laborum.</p>
+          <p className="text1">In the last century, the fiercest warrior groups fought for the supremacy of the land. Every warrior had equal fighting capabilities. A group of warriors has thought a step ahead to fight their equals. Eventually, they won all the battles. The loot has made them victorious.</p>
+          <p className="text1">The time has come for you to emerge victorious in this ultimate battle. Gather your loot now.</p>
         </div>
       </section>
 
 
       <section className="type-b">
         <h2 className="quest">FAQs</h2>
-
-        <div className="faq">
-          <div className="question">
-            <h3>How much loot is available for the battle?</h3>
-            <svg width="15" height="10" viewBox="0 0 42 35">
-              <path d="M3 3L21 21L39 3" stroke="white" strokeWidth="7" strokeLinecap="round" />
-            </svg>
-          </div>
-          <div className="answer">
-            <p>10,000 bags of loot is ready to avenge your enemies</p>
-          </div>
-        </div>
 
 
         <div className="faq">
@@ -186,31 +114,58 @@ const Minter = (props) => {
             </svg>
           </div>
           <div className="answer">
-            <p>The entire loot royale, NFTs and the game, will be deployed on Polygon Network</p>
+            <p>Loot royale NFTs are deployed on the Polygon(Matic) network to avoid excessive gas fees on Ethereum</p>
           </div>
         </div>
 
         <div className="faq">
           <div className="question">
-            <h3>What is the royaly fee on the secondary sales?</h3>
+            <h3>How much loot is available for the battle?</h3>
             <svg width="15" height="10" viewBox="0 0 42 35">
               <path d="M3 3L21 21L39 3" stroke="white" strokeWidth="7" strokeLinecap="round" />
             </svg>
           </div>
           <div className="answer">
-            <p>1% royalty fee set for the secondary sales is entirely used for the community development and giveaways</p>
+            <p>There will be only 10,000 bags of loot</p>
+          </div>
+        </div>
+
+
+       
+
+        <div className="faq">
+          <div className="question">
+            <h3>What does a loot bag contain?</h3>
+            <svg width="15" height="10" viewBox="0 0 42 35">
+              <path d="M3 3L21 21L39 3" stroke="white" strokeWidth="7" strokeLinecap="round" />
+            </svg>
+          </div>
+          <div className="answer">
+            <p>Each bag of loot contains necessary tools like weapons, armors, and consumables that make you battle ready</p>
           </div>
         </div>
 
         <div className="faq">
           <div className="question">
-            <h3>What is the drop date for the loot royale?</h3>
+            <h3>What can you do with the loot?</h3>
             <svg width="15" height="10" viewBox="0 0 42 35">
               <path d="M3 3L21 21L39 3" stroke="white" strokeWidth="7" strokeLinecap="round" />
             </svg>
           </div>
           <div className="answer">
-            <p>01/01/2022</p>
+            <p>You will be able to participate in the battle pools and rarity pools and challenge other players to win in-game tokens</p>
+          </div>
+        </div>
+
+        <div className="faq">
+          <div className="question">
+            <h3>What is the royalty fee on the secondary sales?</h3>
+            <svg width="15" height="10" viewBox="0 0 42 35">
+              <path d="M3 3L21 21L39 3" stroke="white" strokeWidth="7" strokeLinecap="round" />
+            </svg>
+          </div>
+          <div className="answer">
+            <p>The royalty fee on the secondary sales is set at 0% / 0%</p>
           </div>
         </div>
 
@@ -223,6 +178,18 @@ const Minter = (props) => {
           </div>
           <div className="answer">
             <p>10 MATIC</p>
+          </div>
+        </div>
+
+        <div className="faq">
+          <div className="question">
+            <h3>What is the drop date for loot royale?</h3>
+            <svg width="15" height="10" viewBox="0 0 42 35">
+              <path d="M3 3L21 21L39 3" stroke="white" strokeWidth="7" strokeLinecap="round" />
+            </svg>
+          </div>
+          <div className="answer">
+            <p>The drop date will be announced soon on our Discord</p>
           </div>
         </div>
 
@@ -247,7 +214,7 @@ const Minter = (props) => {
 
                   <p>
                     <b>NFT Launch</b>
-                    <br />Launch loot royale NFT with exclusive giveaways and rewards for the community.
+                    <br />Loot royale NFTs are completely on-chain. We want this project to be community-driven. No NFTs are reserved for the team. Active community members will get a chance to be whitelisted in our pre-sale.
                   </p>
                 </li>
               </ul>
@@ -263,8 +230,8 @@ const Minter = (props) => {
                 <li>
 
                   <p>
-                    <b>Loot Marketplace</b>
-                    <br />Our own marketplace with 0% royalty fees and with added rarity scores embedded into our website
+                    <b>Rarity Tool</b>
+                    <br />Every loot bag is unique. We are going to develop a rarity tool to sort loot royale NFTs by rarity and rank.
                   </p>
                 </li>
               </ul>
@@ -279,8 +246,9 @@ const Minter = (props) => {
                 <li>
                   <p>
                     <b>Game Development</b>
-                    <br />Develop a automated battle royale game on blockchain based on the loot generated
-                    <br />NFT holders have the access to play version 1 of the battle royale
+                    <br />A blockchain-based battle royale game is what we aim to achieve. Version 1 of the game will be an automated card-based battle royale game.<br/>
+Loot royale NFT holders will be able to participate in Rarity pools and Battle pools to win our in-game tokens.
+
                   </p>
                 </li>
               </ul>
@@ -295,8 +263,8 @@ const Minter = (props) => {
                 <li>
                   <p>
                     <b>Token Launch</b>
-                    <br />Launching our token which will be used to reward the winners of the battle.Join battle pools and win token rewards.
-                    <br />NFT holders receive part of token supply.
+                    <br />Our token will be used to reward the winners of the battles and governance of the ecosystem.
+                    <br />NFT holders will be airdropped a part of the token supply. More on the tokenomics later.
                   </p>
                 </li>
               </ul>
@@ -320,18 +288,18 @@ const Minter = (props) => {
           </div>
           <div className="right columnx sr-top-fast-delayed rcd" >
             <div className="nav columnx">
-              <a href="#">Home</a>
-              <a href="#">Contract(Soon)</a>
+              <a href="https://lootroyale.xyz">Home</a>
+              <a href="https://lootroyale.xyz">Contract(Soon)</a>
             </div>
             <div className="social rowx">
               <div className="link">
-                <a href="https://opensea.com" name="opensea" rel="noopener" target="_blank" className="opensea row keychainify-checked"></a>
+                <a href="https://opensea.com" name="opensea" rel="noreferrer" target="_blank" className="opensea row keychainify-checked"><span></span></a>
               </div>
               <div className="link">
-                <a href="https://twitter.com/akshayincharge" name="twitter" rel="noopener" target="_blank" className="twitter row keychainify-checked"></a>
+                <a href="https://twitter.com/akshayincharge" name="twitter" rel="noreferrer" target="_blank" className="twitter row keychainify-checked"><span></span></a>
               </div>
               <div className="link">
-                <a href="https://discord.com" name="discord" rel="noopener" target="_blank" className="discord row keychainify-checked"></a>
+                <a href="https://discord.com" name="discord" rel="noreferrer" target="_blank" className="discord row keychainify-checked"><span></span></a>
               </div>
               
             </div>

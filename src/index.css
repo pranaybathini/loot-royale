@@ -171,7 +171,7 @@ section.type-a {
 
 .text1 {
     margin-bottom: 20px;
-    font-size: 2.5vmin;
+    font-size: 20px;
     font-weight: 400;
     color: rgb(109, 105, 105);
 }
@@ -209,7 +209,7 @@ section.type-b {
 }
   
 .question h3 {
-    font-size: 3vmin;
+    font-size: 20px;
 }
   
 .answer {
@@ -222,7 +222,7 @@ section.type-b {
     color: rgb(109, 105, 105);
     padding-top: 2vmin;
     line-height: 1.6;
-    font-size: 18px;
+    font-size: 20px;
 }
   
 .faq.active .answer {
@@ -340,7 +340,7 @@ svg {
   .block ul li p {
     font-weight: 400;
     color: #000;
-    font-size: 1em;
+    font-size: 20px;
     line-height: 1.75;
     margin: 0;
   }
