@@ -59,9 +59,9 @@ const Minter = (props) => {
       <nav className="navbar">
         <h1 className="logo"><b>Loot Royale</b></h1>
         <ul className="nav-links">
-          <li className="act"><a href="https://twitter.com/lootroyale">Opensea</a></li>
+          {/* <li className="act"><a href="#">Opensea</a></li> */}
           <li className="act"><a href="https://twitter.com/lootroyale">Twitter</a></li>
-          <li className="act"><a href="https://twitter.com/lootroyale">Discord</a></li>
+          <li className="act"><a href="https://discord.gg/jKV3aWXV">Discord</a></li>
           <li className="ctn" onClick={connectWalletPressed}>
             {(walletAddress.length > 0) ? (
               "" +
@@ -91,13 +91,11 @@ const Minter = (props) => {
         </div>
         <div className="story">
           <h3 className="heading">Overview</h3>
-          <p className="text1">Battle Loot is the randomly generate battle royale loot for RPG players. Images are omitted for
-            reducing blockchain complexity</p>
-          <p className="text1">Battle Loot is the randomly generate battle royale loot for RPG players. Images are omitted for
-            reducing blockchain complexity</p>
+          <p className="text1">Loot royale is a randomly generated battle royale loot. Loot royale NFTs are completely on-chain. Images are omitted to reduce blockchain complexity. </p>
+
           <h3 className="heading">The Story</h3>
-          <p className="text1">In the last century, the fiercest warrior groups fought for the supremacy of the land. Every warrior had equal fighting capabilities. A group of warriors has thought a step ahead to fight their equals. Eventually, they won all the battles. The loot has made them victorious.</p>
-          <p className="text1">The time has come for you to emerge victorious in this ultimate battle. Gather your loot now.</p>
+          <p className="text1">The year is 2121, the fiercest warrior groups fought for the supremacy of the land. Every warrior had equal fighting capabilities. A group of warriors has thought a step ahead to fight their equals. Eventually, they won all the battles. The loot has made them victorious.</p>
+          <p className="text1">The loot was then hidden in the metaverse forests. A group of looters went in search of the loot and has come across the most advanced loot of all time. This is it, you have now found it...The time has come for you to emerge victorious in this ultimate battle. Gather your loot now.</p>
         </div>
       </section>
 
@@ -165,7 +163,7 @@ const Minter = (props) => {
             </svg>
           </div>
           <div className="answer">
-            <p>The royalty fee on the secondary sales is set at 0% / 0%</p>
+            <p> 0%</p>
           </div>
         </div>
 
@@ -189,7 +187,7 @@ const Minter = (props) => {
             </svg>
           </div>
           <div className="answer">
-            <p>The drop date will be announced soon on our Discord</p>
+            <p>The drop date will be announced soon on our  <a href="https://discord.gg/jKV3aWXV" name="discord" rel="noreferrer" target="_blank">Discord</a></p>
           </div>
         </div>
 
@@ -296,10 +294,10 @@ Loot royale NFT holders will be able to participate in Rarity pools and Battle p
                 <a href="https://opensea.com" name="opensea" rel="noreferrer" target="_blank" className="opensea row keychainify-checked"><span></span></a>
               </div>
               <div className="link">
-                <a href="https://twitter.com/akshayincharge" name="twitter" rel="noreferrer" target="_blank" className="twitter row keychainify-checked"><span></span></a>
+                <a href="https://twitter.com/lootroyale" name="twitter" rel="noreferrer" target="_blank" className="twitter row keychainify-checked"><span></span></a>
               </div>
               <div className="link">
-                <a href="https://discord.com" name="discord" rel="noreferrer" target="_blank" className="discord row keychainify-checked"><span></span></a>
+                <a href="https://discord.gg/jKV3aWXV" name="discord" rel="noreferrer" target="_blank" className="discord row keychainify-checked"><span></span></a>
               </div>
               
             </div>
