@@ -212,7 +212,7 @@ const Minter = (props) => {
 
                   <p>
                     <b>NFT Launch</b>
-                    <br />Loot royale NFTs are completely on-chain. We want this project to be community-driven. No NFTs are reserved for the team. Active community members will get a chance to be whitelisted in our pre-sale.
+                    <br />Loot royale NFT launch will be fair. No NFTs are reserved for the team. We want this project to be community-driven. Active community members will get a chance to be whitelisted in our pre-sale.
                   </p>
                 </li>
               </ul>
