@@ -61,7 +61,7 @@ const Minter = (props) => {
         <ul className="nav-links">
           {/* <li className="act"><a href="#">Opensea</a></li> */}
           <li className="act"><a href="https://twitter.com/lootroyale">Twitter</a></li>
-          <li className="act"><a href="https://discord.gg/jKV3aWXV">Discord</a></li>
+          <li className="act"><a href="https://discord.com/invite/PrT7ZX2EAa">Discord</a></li>
           <li className="ctn" onClick={connectWalletPressed}>
             {(walletAddress.length > 0) ? (
               "" +
@@ -187,7 +187,7 @@ const Minter = (props) => {
             </svg>
           </div>
           <div className="answer">
-            <p>The drop date will be announced soon on our  <a href="https://discord.gg/jKV3aWXV" name="discord" rel="noreferrer" target="_blank">Discord</a></p>
+            <p>The drop date will be announced soon on our  <a href="https://discord.com/invite/PrT7ZX2EAa" name="discord" rel="noreferrer" target="_blank">Discord</a></p>
           </div>
         </div>
 
@@ -291,13 +291,13 @@ Loot royale NFT holders will be able to participate in Rarity pools and Battle p
             </div>
             <div className="social rowx">
               <div className="link">
-                <a href="https://opensea.com" name="opensea" rel="noreferrer" target="_blank" className="opensea row keychainify-checked"><span></span></a>
+                <a href="#" name="opensea" rel="noreferrer" target="_blank" className="opensea row keychainify-checked"><span></span></a>
               </div>
               <div className="link">
                 <a href="https://twitter.com/lootroyale" name="twitter" rel="noreferrer" target="_blank" className="twitter row keychainify-checked"><span></span></a>
               </div>
               <div className="link">
-                <a href="https://discord.gg/jKV3aWXV" name="discord" rel="noreferrer" target="_blank" className="discord row keychainify-checked"><span></span></a>
+                <a href="https://discord.com/invite/PrT7ZX2EAa" name="discord" rel="noreferrer" target="_blank" className="discord row keychainify-checked"><span></span></a>
               </div>
               
             </div>
