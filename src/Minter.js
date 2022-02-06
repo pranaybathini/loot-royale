@@ -97,7 +97,7 @@ const Minter = (props) => {
       <nav className="navbar">
         <h1 className="logo"><b>Loot Royale</b></h1>
         <ul className="nav-links">
-        <li className="act"><a href="https://lootroyale.xyz/">Opensea</a></li>
+        <li className="act"><a href="https://opensea.io/collection/loot-royale">Opensea</a></li>
         <li className="act"><a href="https://discord.com/invite/PrT7ZX2EAa">Discord</a></li>
           <li className="ctn" onClick={connectWalletPressed}>
             {(walletAddress.length > 0) ? (
@@ -324,7 +324,7 @@ const Minter = (props) => {
             </div>
             <div className="social rowx">
               <div className="link">
-                <a href="https://opensea.com" name="opensea" rel="noreferrer" target="_blank" className="opensea row keychainify-checked">
+                <a href="https://opensea.io/collection/loot-royale" name="opensea" rel="noreferrer" target="_blank" className="opensea row keychainify-checked">
 
                 </a>
               </div>

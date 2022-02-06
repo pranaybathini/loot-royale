@@ -100,13 +100,13 @@ export const getCurrentWalletConnected = async () => {
       }
     } catch (err) {
       return {
-        address: "2",
+        address: "",
         status: "😥 " + err.message,
       };
     }
   } else {
     return {
-      address: "3",
+      address: "",
       status: (
         <span>
           <p>
