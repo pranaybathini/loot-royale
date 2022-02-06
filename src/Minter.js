@@ -56,6 +56,7 @@ const Minter = (props) => {
   const connectWalletPressed = async () => {
     if (!connected) {
       const walletResponse = await connectWallet();
+      console.log(walletResponse);
       setWallet(walletResponse.address);
       setConnected(true);
       console.log("Connected metamask to Battle Royale!!")
@@ -96,9 +97,8 @@ const Minter = (props) => {
       <nav className="navbar">
         <h1 className="logo"><b>Loot Royale</b></h1>
         <ul className="nav-links">
-          <li className="act"><a href="https://www.twitter.com/akshayincharge">Opensea</a></li>
-          <li className="act"><a href="https://www.twitter.com/akshayincharge">Twitter</a></li>
-          <li className="act"><a href="https://www.twitter.com/akshayincharge">Discord</a></li>
+        <li className="act"><a href="https://lootroyale.xyz/">Opensea</a></li>
+        <li className="act"><a href="https://discord.com/invite/PrT7ZX2EAa">Discord</a></li>
           <li className="ctn" onClick={connectWalletPressed}>
             {(walletAddress.length > 0) ? (
               "" +
@@ -139,25 +139,10 @@ const Minter = (props) => {
         </div>
         <div className="story">
           <h3 className="heading">Overview</h3>
-          <p className="text1">Battle Loot is the randomly generate battle royale loot for RPG players. Images are omitted for
-            reducing blockchain complexity</p>
-          <p className="text1">Battle Loot is the randomly generate battle royale loot for RPG players. Images are omitted for
-            reducing blockchain complexity</p>
+          <p className="text1">Loot royale is a randomly generated battle royale loot. Loot royale NFTs are completely on-chain</p>
           <h3 className="heading">The Story</h3>
-          <p className="text1">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
-            ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-            deserunt mollit anim id est laborum.</p>
-          <p className="text1">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
-            ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-            deserunt mollit anim id est laborum.</p>
+          <p className="text1">The year is 2121, the fiercest warrior groups fought for the supremacy of the land. Every warrior had equal fighting capabilities. A group of warriors has thought a step ahead to fight their equals. Eventually, they won all the battles. The loot has made them victorious.</p>
+          <p className="text1">The loot was then hidden in the metaverse forests. A group of looters went in search of the loot and has come across the most advanced loot of all time. This is it, you have now found it...The time has come for you to emerge victorious in this ultimate battle. Gather your loot now.</p>
         </div>
       </section>
 
@@ -173,7 +158,7 @@ const Minter = (props) => {
             </svg>
           </div>
           <div className="answer">
-            <p>10,000 bags of loot is ready to avenge your enemies</p>
+            <p>There will be only 10,000 bags of loot.</p>
           </div>
         </div>
 
@@ -186,9 +171,23 @@ const Minter = (props) => {
             </svg>
           </div>
           <div className="answer">
-            <p>The entire loot royale, NFTs and the game, will be deployed on Polygon Network</p>
+            <p>Loot royale NFTs are deployed on the Polygon(Matic) network to avoid excessive gas fees on Ethereum.</p>
           </div>
         </div>
+
+        <div className="faq">
+          <div className="question">
+          <h3>What does a loot bag contain?</h3>
+            <svg width="15" height="10" viewBox="0 0 42 35">
+              <path d="M3 3L21 21L39 3" stroke="white" strokeWidth="7" strokeLinecap="round" />
+            </svg>
+          </div>
+          <div className="answer">
+          <p>Each bag of loot contains necessary tools like weapons, armors, and consumables that make you battle ready.</p>
+          </div>
+        </div>
+
+
 
         <div className="faq">
           <div className="question">
@@ -198,19 +197,19 @@ const Minter = (props) => {
             </svg>
           </div>
           <div className="answer">
-            <p>1% royalty fee set for the secondary sales is entirely used for the community development and giveaways</p>
+            <p>0%</p>
           </div>
         </div>
 
         <div className="faq">
           <div className="question">
-            <h3>What is the drop date for the loot royale?</h3>
+            <h3>When can we mint Loot NFTs?</h3>
             <svg width="15" height="10" viewBox="0 0 42 35">
               <path d="M3 3L21 21L39 3" stroke="white" strokeWidth="7" strokeLinecap="round" />
             </svg>
           </div>
           <div className="answer">
-            <p>01/01/2022</p>
+            <p>Now</p>
           </div>
         </div>
 
@@ -222,10 +221,10 @@ const Minter = (props) => {
             </svg>
           </div>
           <div className="answer">
-            <p>10 MATIC</p>
+            <p>5 MATIC<br></br></p>
           </div>
         </div>
-
+        <div className="faq"></div>
 
       </section>
 
@@ -247,7 +246,7 @@ const Minter = (props) => {
 
                   <p>
                     <b>NFT Launch</b>
-                    <br />Launch loot royale NFT with exclusive giveaways and rewards for the community.
+                    <br />Loot royale NFT launch will be fair. No NFTs are reserved for the owner.
                   </p>
                 </li>
               </ul>
@@ -263,8 +262,8 @@ const Minter = (props) => {
                 <li>
 
                   <p>
-                    <b>Loot Marketplace</b>
-                    <br />Our own marketplace with 0% royalty fees and with added rarity scores embedded into our website
+                  <b>Rarity Tool</b>
+                  <br/>Every loot bag is unique. We are going to develop a rarity tool to sort loot royale NFTs by rarity and rank.
                   </p>
                 </li>
               </ul>
@@ -320,18 +319,19 @@ const Minter = (props) => {
           </div>
           <div className="right columnx sr-top-fast-delayed rcd" >
             <div className="nav columnx">
-              <a href="#">Home</a>
-              <a href="#">Contract(Soon)</a>
+              <a href="https://lootroyale.xyz">Home</a>
+              <a href="https://lootroyale.xyz">Contract(Soon)</a>
             </div>
             <div className="social rowx">
               <div className="link">
-                <a href="https://opensea.com" name="opensea" rel="noopener" target="_blank" className="opensea row keychainify-checked"></a>
+                <a href="https://opensea.com" name="opensea" rel="noreferrer" target="_blank" className="opensea row keychainify-checked">
+
+                </a>
               </div>
               <div className="link">
-                <a href="https://twitter.com/akshayincharge" name="twitter" rel="noopener" target="_blank" className="twitter row keychainify-checked"></a>
-              </div>
-              <div className="link">
-                <a href="https://discord.com" name="discord" rel="noopener" target="_blank" className="discord row keychainify-checked"></a>
+                <a href="https://discord.com/invite/PrT7ZX2EAa" rel="noreferrer" name="discord" target="_blank" className="discord row keychainify-checked">
+
+                </a>
               </div>
               
             </div>

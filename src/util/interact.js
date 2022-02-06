@@ -11,13 +11,12 @@ export const connectWallet = async () => {
 
     //switch if not connect to required network
     const chainId = await web3.eth.getChainId();
-    console.log("chain id is " + chainId);
-    if (chainId !== 80001) {
+    if (chainId !== 137) {
       //add in try block to handle if network to switch doesn't exist
       try {
         await window.ethereum.request({
           method: 'wallet_switchEthereumChain',
-          params: [{ chainId: '0x13881' }],
+          params: [{ chainId: '0x89' }],
         });
       } catch (switchError) {
         if (switchError.code === 4902 ) {
@@ -25,23 +24,23 @@ export const connectWallet = async () => {
             await window.ethereum.request({
               method: 'wallet_addEthereumChain',
               params: [{
-                chainId: '0x13881',
-                chainName: 'Polygon Testnet',
+                chainId: '0x89',
+                chainName: 'Polygon Mainnet',
                 nativeCurrency: {
                   name: 'MATIC',
                   symbol: 'MATIC',
                   decimals: 18
                 },
-                rpcUrls: ['https://rpc-mumbai.maticvigil.com/'],
-                blockExplorerUrls: ['https://mumbai.polygonscan.com/']
+                rpcUrls: ['https://rpc-mainnet.maticvigil.com/'],
+                blockExplorerUrls: ['https://polygonscan.com/']
               }],
             });
           } catch (addError) {
-            // handle "add" error
+            window.alert("Error adding Polygon RPC to Metamask. Please add Manually.");
           }
         }
       }
-      console.log("Switched network");
+    }
 
       // connect site to metamask
       try {
@@ -55,6 +54,7 @@ export const connectWallet = async () => {
         };
         return obj;
       } catch (err) {
+        console.log(err);
         return {
           address: "",
           status: "😥 " + err.message,
@@ -77,7 +77,7 @@ export const connectWallet = async () => {
         ),
       };
     }
-  }
+  
 };
 
 export const getCurrentWalletConnected = async () => {
@@ -86,6 +86,7 @@ export const getCurrentWalletConnected = async () => {
       const addressArray = await window.ethereum.request({
         method: "eth_accounts",
       });
+      
       if (addressArray.length > 0) {
         return {
           address: addressArray[0],
@@ -99,13 +100,13 @@ export const getCurrentWalletConnected = async () => {
       }
     } catch (err) {
       return {
-        address: "",
+        address: "2",
         status: "😥 " + err.message,
       };
     }
   } else {
     return {
-      address: "",
+      address: "3",
       status: (
         <span>
           <p>
@@ -127,11 +128,11 @@ export const mintNFT = async () => {
 
   const chainId = await web3.eth.getChainId();
   console.log("chain id is " + chainId);
-  if (chainId !== 80001) {
+  if (chainId !== 137) {
     //add in try block to handle if network to switch doesn't exist
     await window.ethereum.request({
       method: 'wallet_switchEthereumChain',
-      params: [{ chainId: '0x13881' }],
+      params: [{ chainId: '0x89' }],
     });
   }
   console.log("Switched network");
@@ -147,25 +148,18 @@ export const mintNFT = async () => {
   };
 
   try {
-    console.log(transactionParameters);
     const txHash = await window.ethereum.request({
       method: "eth_sendTransaction",
       params: [transactionParameters],
     });
 
-
-    //TODO: get id from lasted nft minted and then call tokenURI method to display NFT.
-
     const id = await contract.methods.getLastMintedId().call();
-    console.log("Last Minted Id", id);
-
     const uri = await contract.methods.tokenURI(id).call();
-    console.log(uri);
 
     return {
       success: true,
       status:
-        "https://mumbai.polygonscan.com/tx/" +
+        "https://polygonscan.com/tx/" +
         txHash,
       uri: uri,
       id: id,

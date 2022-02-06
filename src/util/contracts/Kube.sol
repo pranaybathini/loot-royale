@@ -1412,9 +1412,12 @@ library CardDesign{
 pragma solidity ^0.8.0;
 
 contract Loot is ERC721Enumerable, ReentrancyGuard, Ownable {
-
     using Counters for Counters.Counter;
+
     Counters.Counter private _tokenIds;
+    uint256 public NFTPrice = 10**16 wei; //10**16 == 0.01, 10**18 == 1, 10**19 = 10
+    uint256 public NFT_PUBLIC_SALE = 10000;
+    bool private ownerNFTClaimed = false;
     
     string[] private weapon1 = ["SCAR-L","M164A","Groza","AKM","AUG A3","M416","QBZ95","Beryl M762","Mk47 Mutant","G36C","Micro UZI","PP-19 Bizon","Tommy Gun","Vector","UMP9","MP5K"];
     
@@ -1442,7 +1445,14 @@ contract Loot is ERC721Enumerable, ReentrancyGuard, Ownable {
         string memory output = sourceArray[rand % sourceArray.length];
         return output;
     }
-    
+
+    function mul(uint256 a, uint256 b) internal pure returns (uint256) {
+        return a * b;
+    }
+
+    function add(uint256 a, uint256 b) internal pure returns (uint256) {
+        return a + b;
+    }
 
 
     function tokenURI(uint256 tokenId) override public view returns (string memory) {
@@ -1467,24 +1477,44 @@ contract Loot is ERC721Enumerable, ReentrancyGuard, Ownable {
 
         string memory output = string(abi.encodePacked(parts[0], parts[1], parts[2], parts[3], parts[4], parts[5], parts[6], parts[7], parts[8]));
 
-        string memory json = string(abi.encodePacked('{"name": "Bag #', toString(tokenId), '", "description": "Loot is randomized adventurer gear generated and stored on chain. Stats, images, and other functionality are intentionally omitted for others to interpret. Feel free to use Loot in any way you want.", "image": "data:image/svg+xml;base64,', Base64.encode(bytes(output)), '"}'));
+        string memory json = string(abi.encodePacked('{"name": "Battle Loot #', toString(tokenId), '", "description": "Loot is randomized adventurer gear generated and stored on chain.", "image": "data:image/svg+xml;base64,', Base64.encode(bytes(output)), '"}'));
         
         return json;
     }
     
-    mapping(address => uint256) private lastNftId;
+
+    function mintMultiple(uint256 _numOfTokens) public payable nonReentrant {
+        require(mul(NFTPrice,_numOfTokens) == msg.value, "Amount Payable is incorrect");
+        uint256 tokenId = _tokenIds.current();
+        require(add(tokenId,_numOfTokens) <= NFT_PUBLIC_SALE, "Token ID invalid");
+        _tokenIds.increment();
+        uint256 start = _tokenIds.current();
+        uint256 end = add(tokenId,_numOfTokens);
+        for(uint i = start; i <= end; i++) {
+            _safeMint(_msgSender(), i);
+        }
+    }
 
     function claim() public payable nonReentrant {
-        //10**16 == 0.01, 10**18 == 1, 10**19 = 10
-        //no min requirement for first 100.
-        require(10**16 wei == msg.value, "Amount required is 0.01 MATIC");
+        require(NFTPrice == msg.value, "Amount Payable is incorrect");
         _tokenIds.increment();
         uint256 tokenId = _tokenIds.current();
         require(tokenId > 0 && tokenId <= 10000, "Token ID invalid");
-        address payable contractOwner = payable(owner());
-        bool sent = contractOwner.send(msg.value);
-        require(sent, "Failed to send Ether");
         _safeMint(_msgSender(), tokenId);
+    }
+    
+
+    function ownerClaim() public nonReentrant onlyOwner {
+       require(ownerNFTClaimed == false, "Owner cannot claim more than one");
+        _safeMint(owner(), 0);
+        ownerNFTClaimed = true;
+    }
+
+       function withdraw() public onlyOwner 
+    {
+        uint balance = address(this).balance;
+        require(balance > 0, "Balance should be more then zero");
+        payable(owner()).transfer(balance);
     }
     
     function getLastMintedId() public view returns (uint256){
@@ -1510,5 +1540,5 @@ contract Loot is ERC721Enumerable, ReentrancyGuard, Ownable {
         return string(buffer);
     }
     
-    constructor() ERC721("Loot Royale", "BLOOT") Ownable() {}
+    constructor() ERC721("Battle Loot", "BT-LOOT") Ownable() {}
 }
