@@ -1,7 +1,7 @@
 import Web3 from 'web3';
 const web3 = new Web3(Web3.givenProvider);
 const contractABI = require("./contracts/contractABI.json");
-const contractAddress = "0x7F0307981cbD6D5c5598552266e3d537141C8890";
+const contractAddress = "0x0770e20307f712B6dBDd6f282DeBE0376a6ab7BF";
 const contract = new web3.eth.Contract(contractABI, contractAddress);
 
 
@@ -31,7 +31,7 @@ export const connectWallet = async () => {
                   symbol: 'MATIC',
                   decimals: 18
                 },
-                rpcUrls: ['https://rpc-mainnet.maticvigil.com/'],
+                rpcUrls: ['https://polygon-rpc.com/'],
                 blockExplorerUrls: ['https://polygonscan.com/']
               }],
             });
@@ -141,7 +141,7 @@ export const mintNFT = async () => {
   const transactionParameters = {
     to: contractAddress, // Required except during contract publications.
     from: window.ethereum.selectedAddress, // must match user's active address.
-    value: web3.utils.toHex(1e16),//0.01 of selected network main token, 1**18 == 1, 1**17 == 0.1, 1**16==0.01
+    value: web3.utils.toHex(5e18),//5 of selected network main token, 1**18 == 1, 1**17 == 0.1, 1**16==0.01
     data: contract.methods
       .claim()
       .encodeABI(),
