@@ -1,7 +1,7 @@
 import Web3 from 'web3';
 const web3 = new Web3(Web3.givenProvider);
 const contractABI = require("./contracts/contractABI.json");
-const contractAddress = "0x7F0307981cbD6D5c5598552266e3d537141C8890";
+const contractAddress = "0x0Fa26025866ee92C7573045305AF170eE6150e69";
 const contract = new web3.eth.Contract(contractABI, contractAddress);
 
 
@@ -41,6 +41,7 @@ export const connectWallet = async () => {
           }
         }
       }
+    }
       console.log("Switched network");
 
       // connect site to metamask
@@ -77,7 +78,7 @@ export const connectWallet = async () => {
         ),
       };
     }
-  }
+  
 };
 
 export const getCurrentWalletConnected = async () => {
