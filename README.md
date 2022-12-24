@@ -1,8 +1,12 @@
 # 🗃 Rarity Loot
 
 
-```npm install```
+```bash
+npm install
+```
 
-```npm start```
+```bash
+npm start
+```
 
 Project is live at [prodloot.netlify.com](https://prodloot.netlify.com)
